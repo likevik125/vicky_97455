@@ -198,8 +198,8 @@ a { color: inherit; text-decoration: none; }
 .float-card-3 { top: 50%; left: -40px; animation-delay: -4s; }
 @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-/* =================== SECTIONS =================== */
-.section { padding: 110px 0; position: relative; }
+/* =================== SECTIONS ==================== */
+.section { padding: 50px 0; position: relative; }
 .section-grid::before {
   content: ""; position: absolute; inset: 0; z-index: 0; opacity: .25;
   background-image:
