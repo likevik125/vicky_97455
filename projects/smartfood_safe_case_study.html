@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SmartFood Safe — Case Study · Vignesh M</title>
+<meta name="description" content="An AI-Powered Enterprise B2B Supplier Quality Assurance & Compliance Portal.">
+<meta property="og:title" content="SmartFood Safe — Case Study · Vignesh M">
+<meta property="og:description" content="An AI-Powered Enterprise B2B Supplier Quality Assurance & Compliance Portal.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&family=Poppins:wght=300;400;500;600;700;800&family=JetBrains+Mono:wght=400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --cream:oklch(0.972 0.012 85);
+  --ink:oklch(0.18 0.015 60);
+  --ember:oklch(0.58 0.16 42);
+  --ember-soft:oklch(0.85 0.06 55);
+  --hairline:oklch(0.85 0.015 75);
+  --muted:oklch(0.94 0.012 80);
+  --muted-fg:oklch(0.42 0.02 65);
+  --card:oklch(0.98 0.008 85);
+  --bg:var(--cream);
+  --fg:var(--ink);
+  --border:var(--hairline);
+  --radius:0.5rem;
+  --font-display:"Poppins",ui-sans-serif,system-ui,sans-serif;
+  --font-sans:"Inter",ui-sans-serif,system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;border-color:var(--border)}
+html{font-family:var(--font-sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-feature-settings:"ss01","cv11";line-height:1.5}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
+input,textarea{font:inherit}
+::selection{background:var(--ember);color:var(--cream)}
+ul{list-style:none}
+
+.font-display{font-family:var(--font-display);font-weight:600;letter-spacing:-0.03em}
+.font-mono{font-family:var(--font-mono)}
+.text-muted{color:var(--muted-fg)}
+.text-accent{color:var(--ember)}
+.italic{font-style:italic}
+.balance{text-wrap:balance}
+
+.container{max-width:80rem;margin:0 auto;padding:0 1.5rem}
+.container-sm{max-width:72rem;margin:0 auto;padding:0 1.5rem}
+
+.section{border-bottom:1px solid var(--border)}
+.section-inner{padding:6rem 0}
+@media(min-width:768px){.section-inner{padding:8rem 0}}
+
+.eyebrow{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.3em;color:var(--muted-fg);display:inline-flex;align-items:center;gap:.75rem}
+.eyebrow .rule{display:inline-block;width:2rem;height:1px;background:rgba(0,0,0,.35)}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:color-mix(in oklab,var(--cream) 85%, transparent);border-bottom:1px solid var(--border)}
+.nav-row{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-family:var(--font-display);font-size:1.25rem;font-weight:700;letter-spacing:-.02em}
+.brand em{color:var(--ember);font-style:italic}
+.nav-links{display:none;gap:2rem;font-size:.875rem}
+.nav-links a:hover{color:var(--ember)}
+@media(min-width:768px){.nav-links{display:flex}}
+.nav-cta{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);border-radius:9999px;padding:.5rem 1rem;font-size:.8125rem;transition:.2s}
+.nav-cta:hover{border-color:var(--ember);color:var(--ember)}
+
+/* Hero */
+.hero h1{font-family:var(--font-display);font-weight:600;letter-spacing:-0.03em;font-size:3rem;line-height:.95;max-width:60rem;margin-top:2rem}
+@media(min-width:768px){.hero h1{font-size:7rem}}
+.hero-row{display:grid;gap:2.5rem;margin-top:3rem}
+@media(min-width:768px){.hero-row{grid-template-columns:1.4fr 1fr;align-items:end}}
+.hero-desc{max-width:36rem;font-size:1.125rem;color:var(--muted-fg)}
+.hero-desc span{color:var(--fg)}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:9999px;padding:.75rem 1.5rem;font-size:.875rem;font-weight:500;transition:.2s}
+.btn-primary{background:var(--fg);color:var(--bg)}
+.btn-primary:hover{opacity:.9}
+.btn-outline{border:1px solid var(--border)}
+.btn-outline:hover{background:var(--muted)}
+.stats{margin-top:5rem;display:grid;gap:2rem;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--border);padding-top:2.5rem}
+@media(min-width:768px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat n{display:block}
+.stat .n{font-family:var(--font-display);font-size:3.75rem;line-height:1;font-weight:600;letter-spacing:-.03em}
+.stat p{margin-top:.75rem;font-size:.875rem;color:var(--muted-fg)}
+
+/* About */
+.about{display:grid;gap:4rem;padding:6rem 0}
+@media(min-width:768px){.about{grid-template-columns:1fr 1.6fr;padding:8rem 0}}
+.portrait{aspect-ratio:4/5;overflow:hidden;border-radius:1rem;background:var(--muted);margin-top:1.5rem}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.about-info{margin-top:2rem;font-size:.875rem}
+.about-info div{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:.75rem 0}
+.about-info dt{color:var(--muted-fg)}
+.about-info dd{font-weight:500}
+.about h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;font-size:2.5rem;line-height:1.05;text-wrap:balance}
+@media(min-width:768px){.about h2{font-size:4.5rem}}
+.about p{margin-top:1rem;color:var(--muted-fg);font-size:1.125rem}
+.skills-inline{margin-top:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:.75rem 1.5rem;font-size:.875rem}
+.skills-inline li{display:flex;align-items:center;gap:.5rem}
+.dot{width:.25rem;height:.25rem;border-radius:9999px;background:var(--ember)}
+
+/* Work */
+.work-header{display:flex;align-items:end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.work-header h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1rem;font-size:3rem}
+@media(min-width:768px){.work-header h2{font-size:4.5rem}}
+.work-list{margin-top:4rem;display:flex;flex-direction:column;gap:1.5rem}
+.work-card{display:grid;overflow:hidden;border-radius:1.5rem;border:1px solid var(--border);background:var(--card);transition:.2s}
+.work-card:hover{border-color:rgba(0,0,0,.3)}
+@media(min-width:768px){.work-card{grid-template-columns:1.2fr 1fr}}
+.work-img{aspect-ratio:4/3;overflow:hidden;background:var(--muted)}
+.work-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.work-card:hover .work-img img{transform:scale(1.03)}
+.work-body{display:flex;flex-direction:column;justify-content:space-between;gap:2.5rem;padding:2rem}
+@media(min-width:768px){.work-body{padding:3rem}}
+.work-meta{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-fg)}
+.work-body h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1.5rem;font-size:2rem;line-height:1.15}
+@media(min-width:768px){.work-body h3{font-size:2.5rem}}
+.work-body .tag{margin-top:1rem;color:var(--muted-fg)}
+.work-cta{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);border-radius:9999px;padding:.5rem 1rem;font-size:.75rem;font-weight:500;transition:.2s}
+.work-card:hover .work-cta{border-color:var(--ember);color:var(--ember)}
+
+/* Services grid */
+.services{margin-top:4rem;display:grid;gap:1px;overflow:hidden;border-radius:1.5rem;border:1px solid var(--border);background:var(--border)}
+@media(min-width:768px){.services{grid-template-columns:repeat(3,1fr)}}
+.service{background:var(--bg);padding:2rem;transition:background .2s}
+.service:hover{background:var(--muted)}
+.service-ico{width:2rem;height:2rem;border-radius:9999px;background:color-mix(in oklab,var(--ember) 12%,transparent);color:var(--ember);display:flex;align-items:center;justify-content:center}
+.service h3{margin-top:1.5rem;font-size:1.25rem;font-weight:600}
+.service p{margin-top:.75rem;font-size:.875rem;color:var(--muted-fg)}
+
+/* Skills grid */
+.skills-grid{margin-top:4rem;display:grid;gap:2.5rem}
+@media(min-width:640px){.skills-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.skills-grid{grid-template-columns:repeat(4,1fr)}}
+.skills-grid h4{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--ember)}
+.skills-grid ul{margin-top:1.25rem;display:flex;flex-direction:column;gap:.75rem}
+.skills-grid li{border-bottom:1px solid var(--border);padding-bottom:.75rem;font-size:.875rem}
+
+/* Process */
+.process-wrap{display:grid;gap:4rem}
+@media(min-width:768px){.process-wrap{grid-template-columns:1fr 1.4fr}}
+.process-wrap h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1rem;font-size:3rem}
+.process-list{display:flex;flex-direction:column;gap:1.5rem}
+.process-item{display:grid;grid-template-columns:auto 1fr;gap:1.5rem;border-bottom:1px solid var(--border);padding-bottom:1.5rem}
+.process-item:last-child{border-bottom:none}
+.process-n{font-family:var(--font-display);font-size:2.25rem;color:var(--ember);font-weight:600}
+.process-item h3{font-size:1.25rem;font-weight:600}
+.process-item p{margin-top:.5rem;color:var(--muted-fg)}
+
+/* Experience */
+.exp{margin-top:4rem}
+.exp-item{display:grid;gap:1.5rem;padding:2rem 0;border-top:1px solid var(--border)}
+.exp-item:first-child{border-top:none}
+@media(min-width:768px){.exp-item{grid-template-columns:220px 1fr}}
+.exp-range{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-fg)}
+.exp-kind{display:inline-flex;border:1px solid var(--border);border-radius:9999px;padding:.125rem .5rem;font-size:.625rem;margin-top:.5rem}
+.exp-item h3{font-size:1.5rem;font-weight:600}
+.exp-item p{margin-top:.75rem;max-width:48rem;color:var(--muted-fg)}
+
+/* Education cols */
+.cols3{display:grid;gap:4rem;padding:6rem 0}
+@media(min-width:768px){.cols3{grid-template-columns:repeat(3,1fr);padding:8rem 0}}
+.cols3 h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1rem;font-size:1.875rem}
+.cols3 ul{margin-top:2rem;display:flex;flex-direction:column;gap:1.5rem}
+.cols3 li.edu{border-bottom:1px solid var(--border);padding-bottom:1.5rem}
+.edu p.year{font-family:var(--font-mono);font-size:.75rem;color:var(--muted-fg)}
+.edu p.title{margin-top:.5rem;font-weight:600}
+.edu p.place{font-size:.875rem;color:var(--muted-fg)}
+.edu p.body{margin-top:.5rem;font-size:.875rem;color:var(--muted-fg)}
+.dashed{border:1px dashed var(--border);border-radius:.75rem;padding:1rem;color:var(--muted-fg);font-size:.875rem}
+
+/* Why me */
+.why{background:var(--muted)}
+.why h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1rem;max-width:48rem;font-size:3rem;text-wrap:balance}
+@media(min-width:768px){.why h2{font-size:4.5rem}}
+.why-grid{margin-top:4rem;display:grid;gap:2rem}
+@media(min-width:768px){.why-grid{grid-template-columns:repeat(4,1fr)}}
+.why-card{border-radius:1rem;border:1px solid var(--border);background:var(--bg);padding:2rem}
+.why-card h3{font-size:1.125rem;font-weight:600}
+.why-card p{margin-top:.75rem;font-size:.875rem;color:var(--muted-fg)}
+
+/* Contact */
+.contact h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1.5rem;max-width:56rem;font-size:3.75rem;line-height:.95;text-wrap:balance}
+@media(min-width:768px){.contact h2{font-size:8rem}}
+.contact .lead{margin-top:2rem;max-width:36rem;font-size:1.125rem;color:var(--muted-fg)}
+.contact-grid{margin-top:4rem;display:grid;gap:2.5rem}
+@media(min-width:768px){.contact-grid{grid-template-columns:1fr 1fr}}
+.contact-links a,.contact-links div{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);padding:1rem 0;font-size:1.125rem;transition:color .2s}
+.contact-links a:hover{color:var(--ember)}
+.form{display:flex;flex-direction:column;gap:1rem}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form input,.form textarea{width:100%;border:1px solid var(--border);background:var(--bg);border-radius:.5rem;padding:.75rem 1rem;font-size:.875rem;outline:none;transition:border-color .2s;color:var(--fg)}
+.form input:focus,.form textarea:focus{border-color:var(--ember)}
+.form button{border-radius:9999px;background:var(--fg);color:var(--bg);padding:.75rem;font-size:.875rem;font-weight:500;transition:opacity .2s}
+.form button:hover{opacity:.9}
+
+/* Footer */
+footer{padding:3rem 0;font-size:.875rem;color:var(--muted-fg)}
+footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;align-items:center}
+footer .links{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:flex-end}
+footer .links a{display:inline-flex;align-items:center;white-space:nowrap}
+footer .links .back-to-top{margin-left:auto;width:2.5rem;height:2.5rem;border-radius:9999px;border:1px solid var(--border);background:var(--card);color:var(--fg);font-size:1.125rem;justify-content:center;flex-shrink:0}
+footer .links .back-to-top:hover{border-color:var(--ember);color:var(--ember)}
+footer .links a:hover{color:var(--ember)}
+
+/* Case study */
+.case-hero .back{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-fg)}
+.case-hero .back:hover{color:var(--ember)}
+.case-meta{margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:1rem;font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-fg);align-items:center}
+.case-meta .sep{width:.25rem;height:.25rem;border-radius:9999px;background:var(--muted-fg)}
+.case-hero h1{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:2rem;font-size:3.75rem;line-height:.95;text-wrap:balance}
+@media(min-width:768px){.case-hero h1{font-size:6rem}}
+.case-hero .tagline{margin-top:1.5rem;max-width:48rem;font-size:1.25rem;color:var(--muted-fg)}
+.case-cover{aspect-ratio:16/10;overflow:hidden;border-radius:1.5rem;border:1px solid var(--border);background:var(--muted);margin-top:2.5rem}
+.case-cover img{width:100%;height:100%;object-fit:cover}
+
+.cs-section{border-bottom:1px solid var(--border);padding:4rem 0}
+@media(min-width:768px){.cs-section{padding:5rem 0}}
+.cs-grid{display:grid;gap:2.5rem;max-width:72rem;margin:0 auto;padding:0 1.5rem}
+@media(min-width:768px){.cs-grid{grid-template-columns:220px 1fr}}
+.cs-label{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.3em;color:var(--ember)}
+.cs-title{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:.75rem;font-size:1.875rem;line-height:1.15}
+.cs-body{max-width:none;font-size:1.125rem;color:var(--muted-fg)}
+.cs-body p+*{margin-top:1rem}
+.cs-list{display:flex;flex-direction:column;gap:.75rem}
+.cs-list li{display:flex;gap:.75rem}
+.cs-list li::before{content:"";display:block;margin-top:.5rem;width:.75rem;height:.25rem;background:var(--ember);flex:none}
+.personas-grid{display:grid;gap:1.5rem}
+@media(min-width:768px){.personas-grid{grid-template-columns:1fr 1fr}}
+.persona{border-radius:1rem;border:1px solid var(--border);background:var(--card);padding:1.5rem}
+.persona .name{font-family:var(--font-display);font-size:1.5rem;color:var(--fg);font-weight:600}
+.persona .role{margin-top:.25rem;font-size:.875rem;color:var(--muted-fg)}
+.persona .blk{margin-top:1rem}
+.persona .k{font-family:var(--font-mono);font-size:.625rem;text-transform:uppercase;letter-spacing:.15em;color:var(--ember)}
+.persona .v{margin-top:.25rem;color:var(--fg);font-size:.875rem}
+.journey-table{overflow:hidden;border-radius:1rem;border:1px solid var(--border);width:100%}
+.journey-table table{width:100%;border-collapse:collapse;font-size:.875rem;text-align:left}
+.journey-table th{background:var(--muted);padding:1rem;font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.15em;color:var(--fg)}
+.journey-table td{padding:1rem;border-top:1px solid var(--border);color:var(--muted-fg)}
+.journey-table td.stage{color:var(--fg);font-weight:500}
+.journey-table td.feel{color:var(--ember)}
+.notes{border:1px dashed var(--border);background:var(--muted);border-radius:1rem;padding:1.5rem;color:var(--fg);font-size:.875rem}
+.notes .k{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--ember)}
+.notes ul{margin-top:.75rem;display:flex;flex-direction:column;gap:.5rem}
+
+.next-cs{max-width:72rem;margin:0 auto;padding:5rem 1.5rem}
+.next-cs .card{margin-top:1.5rem;display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem;border-radius:1.5rem;border:1px solid var(--border);background:var(--card);padding:2.5rem;transition:.2s}
+.next-cs .card:hover{border-color:rgba(0,0,0,.3)}
+.next-cs .work-cta{align-self:flex-start}
+@media(min-width:768px){
+  .next-cs .card{flex-direction:row;align-items:end}
+  .next-cs .work-cta{align-self:flex-end}
+}
+.next-cs h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:.75rem;font-size:3rem}
+.next-cs p{margin-top:.75rem;max-width:36rem;color:var(--muted-fg)}
+</style>
+</head>
+<body id="top">
+
+<header class="nav">
+  <div class="container nav-row">
+    <a class="brand" href="../index.html">Vignesh<em>.</em></a>
+    <nav class="nav-links">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#skills">Skills</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="../index.html#contact">Let's talk →</a>
+  </div>
+</header>
+
+<section class="section case-hero">
+  <div class="container-sm" style="padding:4rem 1.5rem 5rem">
+    <a class="back" href="../index.html">← All projects</a>
+    <div class="case-meta">
+      <span>Web · Enterprise B2B SaaS</span><span class="sep"></span>
+      <span>2026</span><span class="sep"></span>
+      <span>Lead UX/UI Designer</span>
+    </div>
+    <h1>SmartFood Safe</h1>
+    <p class="tagline">An AI-powered B2B enterprise SaaS platform that digitizes and centralizes supplier quality assurance, replacing manual spreadsheet bottlenecks with real-time risk analytics and compliance ledgers.</p>
+    <div class="case-cover">
+      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80" alt="SmartFood Safe Enterprise Dashboard Design Mockup">
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Overview</p></div>
+    <div class="cs-body">
+      <p>SmartFood Safe is a next-generation B2B Enterprise SaaS platform that digitizes and centralizes supplier quality assurance. It replaces manual friction with data-driven workflows, establishing a transparent, real-time bridge between enterprise Quality Assurance (QA) teams and global suppliers to resolve deviations instantly.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Problem</p></div>
+    <div class="cs-body">
+      <p><strong>Fragmented Communication Loops & The Spreadsheet Bottleneck:</strong> When a food safety defect or lab deviation occurs, internal Quality Assurance (QA) teams, procurement managers, and external suppliers communicate via scattered email threads, phone calls, and personal messaging apps. Critical details get lost, causing delays in resolving urgent safety threats.</p>
+      <p>Furthermore, vendor directories, risk metrics, and regulatory compliance documents are managed across massive, disconnected spreadsheets. This static data ecosystem offers zero real-time visibility, making it nearly impossible to spot regional risk patterns before they compromise a production line.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Goals</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span><strong>Establish an Immutable Source of Truth:</strong> Bring internal QA teams and global suppliers into a centralized portal to consolidate chat histories, dispute records, and lab evidence into a single audit-ready hub.</span></li>
+        <li><span><strong>Unlock Real-Time Visual Intelligence:</strong> Translate dense relational data into actionable command centers using interactive features like network-wide risk heatmaps and automated SLA countdown timers.</span></li>
+        <li><span><strong>Deploy Automated Preventive Guardrails:</strong> Introduce intelligent tracking ledgers that continuously monitor global safety credentials and trigger automated warnings weeks before certifications lapse.</span></li>
+        <li><span><strong>Optimize Supplier Directories:</strong> Facilitate deep analytical filtering to allow managers to segment global suppliers dynamically by risk level and food safety standards.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Role</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>Owned end-to-end UX/UI design, translating complex supply chain matrices into highly readable command controls.</span></li>
+        <li><span>Designed the step-by-step AI-Assisted Query Generation Form alongside contextual side-by-side resolution tip sheets.</span></li>
+        <li><span>Crafted visual layout configurations for the Advanced Supplier Directory, incorporating deep sidebar filters and metadata status rows.</span></li>
+        <li><span>Engineered the layout structures for the Certificate Expiry Tracker and real-time SLA visual badges.</span></li>
+        <li><span>Conducted user testing with global supplier networks to ensure rapid, error-free onboarding and data submissions.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Target users</p></div>
+    <div class="cs-body">
+      <p>Enterprise Quality Assurance (QA) managers, global food manufacturers, procurement leads, compliance inspectors, and C-level executives overseeing highly regulated global food supply chains.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Research</p></div>
+    <div class="cs-body">
+      <p>Observed enterprise supply chains in real time, auditing traditional vendor communication logs, static directory archives, and manual audit histories. Conducted extensive interviews with enterprise QA directors and foreign supplier leads to locate critical delays, cognitive overload thresholds, and certification tracking friction during official audits.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Personas</p></div>
+    <div class="cs-body">
+      <div class="personas-grid">
+        <div class="persona">
+          <p class="name">Sarah, 42</p>
+          <p class="role">Enterprise QA Director</p>
+          <div class="blk">
+            <p class="k">Needs</p>
+            <p class="v">Macro visibility over global supplier risks, instantaneous query response rates, and absolute audit readiness.</p>
+          </div>
+          <div class="blk">
+            <p class="k">Frustrations</p>
+            <p class="v">Wrestling with massive vendor spreadsheets, delayed communication during lab exceptions, and expired vendor certificates during sudden regulatory audits.</p>
+          </div>
+        </div>
+        <div class="persona">
+          <p class="name">Marcus, 35</p>
+          <p class="role">Global Supplier Quality Manager</p>
+          <div class="blk">
+            <p class="k">Needs</p>
+            <p class="v">A clear, single channel to log deviation responses, upload evidence files, and renew critical safety certifications.</p>
+          </div>
+          <div class="blk">
+            <p class="k">Frustrations</p>
+            <p class="v">Receiving urgent queries in unorganized emails, overlapping timelines, and losing track of certification expiries across multiple facilities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Pain points</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>Scattered communication channels obscure crucial lab evidence and delay immediate quality threat resolutions.</span></li>
+        <li><span>Static spreadsheets hide geographical risk parameters and make it hard to spot regional deviation trends.</span></li>
+        <li><span>Manual expiration tracking for safety standards (HACCP, ISO, BRCGS) creates severe regulatory and liability blind spots.</span></li>
+        <li><span>Cluttered compliance forms increase onboarding friction and create layout fatigue for global supplier nodes.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">User journey</p></div>
+    <div class="cs-body">
+      <div class="journey-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>Action</th>
+              <th>Feeling</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="stage">1. Supplier Dashboard</td>
+              <td>User logs in and checks high-level KPIs, active queries, and the Risk Heatmap.</td>
+              <td class="feel">Informed</td>
+            </tr>
+            <tr>
+              <td class="stage">2. Raise Quality Query</td>
+              <td>Quality manager files a compliance deviation using the stepped AI-Assisted form.</td>
+              <td class="feel">Supported</td>
+            </tr>
+            <tr>
+              <td class="stage">3. AI Resolution Tips</td>
+              <td>AI Resolution Assistant scans the draft, providing real-time tips to clarify the issue description.</td>
+              <td class="feel">Empowered</td>
+            </tr>
+            <tr>
+              <td class="stage">4. Query Tracking & SLA</td>
+              <td>Supplier tracks query lifecycle via color-coded status badges and visual countdown timers.</td>
+              <td class="feel">In Control</td>
+            </tr>
+            <tr>
+              <td class="stage">5. Executive Analytics</td>
+              <td>C-suite reviews 12-month resolution rates, regional risk distribution, and cost avoidance.</td>
+              <td class="feel">Delighted</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Information architecture</p></div>
+    <div class="cs-body">
+      <p>A high-density navigation hierarchy built on three primary modules: the Executive Command Center (overall health KPIs, network heatmaps), the Supplier Quality Ledger (interactive directory, multi-dimensional filters, certificate tracker), and the Collaborative Query Lifecycle Workspace (stepped query builder, secure audit timelines).</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Competitive analysis</p></div>
+    <div class="cs-body">
+      <p>Evaluated legacy ERP systems, rigid supply chain managers, and standalone audit spreadsheets. Found a clear market opening for real-time risk pattern indicators, automated certification expiration alerts, and integrated supplier-buyer messaging.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Design decisions</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>A left-hand multi-dimensional filtering panel allowing QA managers to segment suppliers instantly by category, risk tier, or certificates.</span></li>
+        <li><span>An integrated split-screen query workspace containing detailed descriptions on one side and a secure contextual chat module on the other.</span></li>
+        <li><span>A clean, vertical, stepped Query Form layout featuring a prominent real-time side panel for AI writing suggestions.</span></li>
+        <li><span>Bold, color-coded SLA countdown badges and status alerts to draw focus directly to high-priority safety breaches.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Wireframes</p></div>
+    <div class="cs-body">
+      <p>Drafted multi-column wireframes to accommodate dense supplier data. Tested different sidebar widths and tabular risk views to maximize cognitive scanning efficiency and visual breathing room on large enterprise displays.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Visual design</p></div>
+    <div class="cs-body">
+      <p>Clean, high-trust corporate system: crisp lines, ample negative space, and functional visual accents. Semantic colors are applied intentionally—highlighting high-risk zones, active warning alerts, and compliant certificates without overwhelming the layout.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Design system</p></div>
+    <div class="cs-body">
+      <p>Constructed an enterprise-grade UI pattern library consisting of responsive data tables, step status chains, contextual conversation panels, drag-and-drop evidence cards, and dynamic filter checkboxes to streamline developer implementation.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Prototype</p></div>
+    <div class="cs-body">
+      <p>Assembled a high-fidelity interactive flow to test the end-to-end journey of a quality deviation. Evaluated critical actions including form filling with AI assistance, supplier-buyer conversations, and viewing overall network metrics.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Accessibility</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>Full WCAG AAA color contrasts across all risk statuses, color-coded badges, and dashboard scores.</span></li>
+        <li><span>Accessible HTML landmarks and keyboard-navigable data grids designed for quick, mouse-free supplier filtering.</span></li>
+        <li><span>Clear Aria descriptions for dynamic live counters, countdown clocks, and progressive file-drop zones.</span></li>
+        <li><span>Fully responsive viewport adaptation supporting error-free navigation on tablet and mobile viewports.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Developer handoff</p></div>
+    <div class="cs-body">
+      <p>Provided modular frontend specifications covering active data tables, filter mechanics, multi-step progress controls, and dynamic chart parameters, encouraging smooth alignment during implementation sprints.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Challenges</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>Displaying dense risk metrics and compliance histories without causing visual fatigue or clutter.</span></li>
+        <li><span>Consolidating scattered communication steps into an intuitive, audit-ready chat timeline.</span></li>
+        <li><span>Persuading external, low-tech supplier personnel to accurately update high-priority food safety credentials.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Solutions</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>An Executive Command Center utilizing simplified, interactive heatmaps and aggregate status cards to show network health at a glance.</span></li>
+        <li><span>An immutable, chronological Timeline Log running alongside a context-rich supplier chat box.</span></li>
+        <li><span>An automated Certification Ledger with built-in email triggers and warning alerts sent weeks before credential expiries.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Results</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>An Advanced Supplier Directory that cuts data-discovery latency down through precise left-hand filters.</span></li>
+        <li><span>A Centralized Query Workspace keeping internal teams and global vendors perfectly aligned on active safety threats.</span></li>
+        <li><span>An automated Certification Ledger that successfully eliminates supply chain gaps due to expired vendor credentials.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Impact</p></div>
+    <div class="cs-body">
+      <p>SmartFood Safe replaces manual communication friction with clean, data-driven workflows, creating an immutable bridge between QA teams and global supplier networks. It eliminates spreadsheet fatigue, prevents sudden certification lapses, and ensures constant, audit-ready regulatory compliance.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Key learnings</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>Visual indicators (such as automated countdowns) drastically improve supplier response speeds compared to text-only requests.</span></li>
+        <li><span>Consolidating chat archives and attachments in a chronological timeline fosters collaborative relationships instead of defensive dispute loops.</span></li>
+        <li><span>Preventive alerts (like early certificate notifications) are far more effective at protecting supply chains than reactive recovery measures.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Future improvements</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>Deeper IoT integrations to automatically pull real-time cold-chain temperature readings and lab values straight into active queries.</span></li>
+        <li><span>AI-enabled translation matrices to ease cross-border supplier negotiations on global portals.</span></li>
+        <li><span>Interactive regional forecasting dashboards pointing out climate and agricultural risk patterns.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Notes to add</p></div>
+    <div class="cs-body">
+      <div class="notes">
+        <p class="k">Audit Readiness</p>
+        <ul>
+          <li>• Every log, chat revision, certificate upload, and SLA modification is saved inside an unalterable chronological audit timeline, ensuring perfect regulatory compliance and preparation for sudden third-party quality inspections.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="next-cs">
+    <p class="eyebrow">Next case study</p>
+    <a class="card" href="zyra_scribe_ai_case_study.html">
+      <div>
+        <p class="cs-label">Dashboard · Medical Billing</p>
+        <h3>Zyra Scribe AI</h3>
+        <p>Zyra Scribe AI is an intelligent medical billing platform that automates clinical documentation, coding, and claim preparation. Designed to improve accuracy, reduce administrative workload, and streamline healthcare workflows.</p>
+      </div>
+      <span class="work-cta">Read next →</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container row">
+    <div>© <span id="year-span">2026</span> Vignesh M — Product Designer & UI Developer, Chennai.</div>
+    <div class="links">
+  <a href="mailto:vigneshamutha2723@gmail.com">Email</a>
+<a href="tel:+916369856082">Phone</a>
+<a class="back-to-top" href="#top" aria-label="Back to top">↑</a>
+</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year-span').innerText = new Date().getFullYear();
+</script>
+</body>
+</html>

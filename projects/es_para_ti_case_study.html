@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Es para ti — Case Study · Vignesh M</title>
+<meta name="description" content="On-the-Go Spiritual Sanctuary & Live Consulting Portal. A thumb-optimized, highly interactive mobile application built to provide quick access to spiritual counselors.">
+<meta property="og:title" content="Es para ti — Case Study · Vignesh M">
+<meta property="og:description" content="On-the-Go Spiritual Sanctuary & Live Consulting Portal. A thumb-optimized, highly interactive mobile application built to provide quick access to spiritual counselors.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&family=Poppins:wght=300;400;500;600;700;800&family=JetBrains+Mono:wght=400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --cream:oklch(0.972 0.012 85);
+  --ink:oklch(0.18 0.015 60);
+  --ember:oklch(0.58 0.16 42);
+  --ember-soft:oklch(0.85 0.06 55);
+  --hairline:oklch(0.85 0.015 75);
+  --muted:oklch(0.94 0.012 80);
+  --muted-fg:oklch(0.42 0.02 65);
+  --card:oklch(0.98 0.008 85);
+  --bg:var(--cream);
+  --fg:var(--ink);
+  --border:var(--hairline);
+  --radius:0.5rem;
+  --font-display:"Poppins",ui-sans-serif,system-ui,sans-serif;
+  --font-sans:"Inter",ui-sans-serif,system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;border-color:var(--border)}
+html{font-family:var(--font-sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-feature-settings:"ss01","cv11";line-height:1.5}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
+input,textarea{font:inherit}
+::selection{background:var(--ember);color:var(--cream)}
+ul{list-style:none}
+
+.font-display{font-family:var(--font-display);font-weight:600;letter-spacing:-0.03em}
+.font-mono{font-family:var(--font-mono)}
+.text-muted{color:var(--muted-fg)}
+.text-accent{color:var(--ember)}
+.italic{font-style:italic}
+.balance{text-wrap:balance}
+
+.container{max-width:80rem;margin:0 auto;padding:0 1.5rem}
+.container-sm{max-width:72rem;margin:0 auto;padding:0 1.5rem}
+
+.section{border-bottom:1px solid var(--border)}
+.section-inner{padding:6rem 0}
+@media(min-width:768px){.section-inner{padding:8rem 0}}
+
+.eyebrow{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.3em;color:var(--muted-fg);display:inline-flex;align-items:center;gap:.75rem}
+.eyebrow .rule{display:inline-block;width:2rem;height:1px;background:rgba(0,0,0,.35)}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:color-mix(in oklab,var(--cream) 85%, transparent);border-bottom:1px solid var(--border)}
+.nav-row{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-family:var(--font-display);font-size:1.25rem;font-weight:700;letter-spacing:-.02em}
+.brand em{color:var(--ember);font-style:italic}
+.nav-links{display:none;gap:2rem;font-size:.875rem}
+.nav-links a:hover{color:var(--ember)}
+@media(min-width:768px){.nav-links{display:flex}}
+.nav-cta{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);border-radius:9999px;padding:.5rem 1rem;font-size:.8125rem;transition:.2s}
+.nav-cta:hover{border-color:var(--ember);color:var(--ember)}
+
+/* Hero */
+.hero h1{font-family:var(--font-display);font-weight:600;letter-spacing:-0.03em;font-size:3rem;line-height:.95;max-width:60rem;margin-top:2rem}
+@media(min-width:768px){.hero h1{font-size:7rem}}
+.hero-row{display:grid;gap:2.5rem;margin-top:3rem}
+@media(min-width:768px){.hero-row{grid-template-columns:1.4fr 1fr;align-items:end}}
+.hero-desc{max-width:36rem;font-size:1.125rem;color:var(--muted-fg)}
+.hero-desc span{color:var(--fg)}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:9999px;padding:.75rem 1.5rem;font-size:.875rem;font-weight:500;transition:.2s}
+.btn-primary{background:var(--fg);color:var(--bg)}
+.btn-primary:hover{opacity:.9}
+.btn-outline{border:1px solid var(--border)}
+.btn-outline:hover{background:var(--muted)}
+.stats{margin-top:5rem;display:grid;gap:2rem;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--border);padding-top:2.5rem}
+@media(min-width:768px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat n{display:block}
+.stat .n{font-family:var(--font-display);font-size:3.75rem;line-height:1;font-weight:600;letter-spacing:-.03em}
+.stat p{margin-top:.75rem;font-size:.875rem;color:var(--muted-fg)}
+
+/* About */
+.about{display:grid;gap:4rem;padding:6rem 0}
+@media(min-width:768px){.about{grid-template-columns:1fr 1.6fr;padding:8rem 0}}
+.portrait{aspect-ratio:4/5;overflow:hidden;border-radius:1rem;background:var(--muted);margin-top:1.5rem}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.about-info{margin-top:2rem;font-size:.875rem}
+.about-info div{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:.75rem 0}
+.about-info dt{color:var(--muted-fg)}
+.about-info dd{font-weight:500}
+.about h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;font-size:2.5rem;line-height:1.05;text-wrap:balance}
+@media(min-width:768px){.about h2{font-size:4.5rem}}
+.about p{margin-top:1rem;color:var(--muted-fg);font-size:1.125rem}
+.skills-inline{margin-top:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:.75rem 1.5rem;font-size:.875rem}
+.skills-inline li{display:flex;align-items:center;gap:.5rem}
+.dot{width:.25rem;height:.25rem;border-radius:9999px;background:var(--ember)}
+
+/* Work */
+.work-header{display:flex;align-items:end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.work-header h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1rem;font-size:3rem}
+@media(min-width:768px){.work-header h2{font-size:4.5rem}}
+.work-list{margin-top:4rem;display:flex;flex-direction:column;gap:1.5rem}
+.work-card{display:grid;overflow:hidden;border-radius:1.5rem;border:1px solid var(--border);background:var(--card);transition:.2s}
+.work-card:hover{border-color:rgba(0,0,0,.3)}
+@media(min-width:768px){.work-card{grid-template-columns:1.2fr 1fr}}
+.work-img{aspect-ratio:4/3;overflow:hidden;background:var(--muted)}
+.work-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.work-card:hover .work-img img{transform:scale(1.03)}
+.work-body{display:flex;flex-direction:column;justify-content:space-between;gap:2.5rem;padding:2rem}
+@media(min-width:768px){.work-body{padding:3rem}}
+.work-meta{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-fg)}
+.work-body h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1.5rem;font-size:2rem;line-height:1.15}
+@media(min-width:768px){.work-body h3{font-size:2.5rem}}
+.work-body .tag{margin-top:1rem;color:var(--muted-fg)}
+.work-cta{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);border-radius:9999px;padding:.5rem 1rem;font-size:.75rem;font-weight:500;transition:.2s}
+.work-card:hover .work-cta{border-color:var(--ember);color:var(--ember)}
+
+/* Services grid */
+.services{margin-top:4rem;display:grid;gap:1px;overflow:hidden;border-radius:1.5rem;border:1px solid var(--border);background:var(--border)}
+@media(min-width:768px){.services{grid-template-columns:repeat(3,1fr)}}
+.service{background:var(--bg);padding:2rem;transition:background .2s}
+.service:hover{background:var(--muted)}
+.service-ico{width:2rem;height:2rem;border-radius:9999px;background:color-mix(in oklab,var(--ember) 12%,transparent);color:var(--ember);display:flex;align-items:center;justify-content:center}
+.service h3{margin-top:1.5rem;font-size:1.25rem;font-weight:600}
+.service p{margin-top:.75rem;font-size:.875rem;color:var(--muted-fg)}
+
+/* Skills grid */
+.skills-grid{margin-top:4rem;display:grid;gap:2.5rem}
+@media(min-width:640px){.skills-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.skills-grid{grid-template-columns:repeat(4,1fr)}}
+.skills-grid h4{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--ember)}
+.skills-grid ul{margin-top:1.25rem;display:flex;flex-direction:column;gap:.75rem}
+.skills-grid li{border-bottom:1px solid var(--border);padding-bottom:.75rem;font-size:.875rem}
+
+/* Process */
+.process-wrap{display:grid;gap:4rem}
+@media(min-width:768px){.process-wrap{grid-template-columns:1fr 1.4fr}}
+.process-wrap h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1rem;font-size:3rem}
+.process-list{display:flex;flex-direction:column;gap:1.5rem}
+.process-item{display:grid;grid-template-columns:auto 1fr;gap:1.5rem;border-bottom:1px solid var(--border);padding-bottom:1.5rem}
+.process-item:last-child{border-bottom:none}
+.process-n{font-family:var(--font-display);font-size:2.25rem;color:var(--ember);font-weight:600}
+.process-item h3{font-size:1.25rem;font-weight:600}
+.process-item p{margin-top:.5rem;color:var(--muted-fg)}
+
+/* Experience */
+.exp{margin-top:4rem}
+.exp-item{display:grid;gap:1.5rem;padding:2rem 0;border-top:1px solid var(--border)}
+.exp-item:first-child{border-top:none}
+@media(min-width:768px){.exp-item{grid-template-columns:220px 1fr}}
+.exp-range{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-fg)}
+.exp-kind{display:inline-flex;border:1px solid var(--border);border-radius:9999px;padding:.125rem .5rem;font-size:.625rem;margin-top:.5rem}
+.exp-item h3{font-size:1.5rem;font-weight:600}
+.exp-item p{margin-top:.75rem;max-width:48rem;color:var(--muted-fg)}
+
+/* Education cols */
+.cols3{display:grid;gap:4rem;padding:6rem 0}
+@media(min-width:768px){.cols3{grid-template-columns:repeat(3,1fr);padding:8rem 0}}
+.cols3 h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1rem;font-size:1.875rem}
+.cols3 ul{margin-top:2rem;display:flex;flex-direction:column;gap:1.5rem}
+.cols3 li.edu{border-bottom:1px solid var(--border);padding-bottom:1.5rem}
+.edu p.year{font-family:var(--font-mono);font-size:.75rem;color:var(--muted-fg)}
+.edu p.title{margin-top:.5rem;font-weight:600}
+.edu p.place{font-size:.875rem;color:var(--muted-fg)}
+.edu p.body{margin-top:.5rem;font-size:.875rem;color:var(--muted-fg)}
+.dashed{border:1px dashed var(--border);border-radius:.75rem;padding:1rem;color:var(--muted-fg);font-size:.875rem}
+
+/* Why me */
+.why{background:var(--muted)}
+.why h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1rem;max-width:48rem;font-size:3rem;text-wrap:balance}
+@media(min-width:768px){.why h2{font-size:4.5rem}}
+.why-grid{margin-top:4rem;display:grid;gap:2rem}
+@media(min-width:768px){.why-grid{grid-template-columns:repeat(4,1fr)}}
+.why-card{border-radius:1rem;border:1px solid var(--border);background:var(--bg);padding:2rem}
+.why-card h3{font-size:1.125rem;font-weight:600}
+.why-card p{margin-top:.75rem;font-size:.875rem;color:var(--muted-fg)}
+
+/* Contact */
+.contact h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1.5rem;max-width:56rem;font-size:3.75rem;line-height:.95;text-wrap:balance}
+@media(min-width:768px){.contact h2{font-size:8rem}}
+.contact .lead{margin-top:2rem;max-width:36rem;font-size:1.125rem;color:var(--muted-fg)}
+.contact-grid{margin-top:4rem;display:grid;gap:2.5rem}
+@media(min-width:768px){.contact-grid{grid-template-columns:1fr 1fr}}
+.contact-links a,.contact-links div{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);padding:1rem 0;font-size:1.125rem;transition:color .2s}
+.contact-links a:hover{color:var(--ember)}
+.form{display:flex;flex-direction:column;gap:1rem}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form input,.form textarea{width:100%;border:1px solid var(--border);background:var(--bg);border-radius:.5rem;padding:.75rem 1rem;font-size:.875rem;outline:none;transition:border-color .2s;color:var(--fg)}
+.form input:focus,.form textarea:focus{border-color:var(--ember)}
+.form button{border-radius:9999px;background:var(--fg);color:var(--bg);padding:.75rem;font-size:.875rem;font-weight:500;transition:opacity .2s}
+.form button:hover{opacity:.9}
+
+/* Footer */
+footer{padding:3rem 0;font-size:.875rem;color:var(--muted-fg)}
+footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;align-items:center}
+footer .links{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:flex-end}
+footer .links a{display:inline-flex;align-items:center;white-space:nowrap}
+footer .links .back-to-top{margin-left:auto;width:2.5rem;height:2.5rem;border-radius:9999px;border:1px solid var(--border);background:var(--card);color:var(--fg);font-size:1.125rem;justify-content:center;flex-shrink:0}
+footer .links .back-to-top:hover{border-color:var(--ember);color:var(--ember)}
+footer .links a:hover{color:var(--ember)}
+
+/* Case study */
+.case-hero .back{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-fg)}
+.case-hero .back:hover{color:var(--ember)}
+.case-meta{margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:1rem;font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-fg);align-items:center}
+.case-meta .sep{width:.25rem;height:.25rem;border-radius:9999px;background:var(--muted-fg)}
+.case-hero h1{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:2rem;font-size:3.75rem;line-height:.95;text-wrap:balance}
+@media(min-width:768px){.case-hero h1{font-size:6rem}}
+.case-hero .tagline{margin-top:1.5rem;max-width:48rem;font-size:1.25rem;color:var(--muted-fg)}
+.case-cover{aspect-ratio:16/10;overflow:hidden;border-radius:1.5rem;border:1px solid var(--border);background:var(--muted);margin-top:2.5rem}
+.case-cover img{width:100%;height:100%;object-fit:cover}
+
+.cs-section{border-bottom:1px solid var(--border);padding:4rem 0}
+@media(min-width:768px){.cs-section{padding:5rem 0}}
+.cs-grid{display:grid;gap:2.5rem;max-width:72rem;margin:0 auto;padding:0 1.5rem}
+@media(min-width:768px){.cs-grid{grid-template-columns:220px 1fr}}
+.cs-label{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.3em;color:var(--ember)}
+.cs-title{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:.75rem;font-size:1.875rem;line-height:1.15}
+.cs-body{max-width:none;font-size:1.125rem;color:var(--muted-fg)}
+.cs-body p+*{margin-top:1rem}
+.cs-list{display:flex;flex-direction:column;gap:.75rem}
+.cs-list li{display:flex;gap:.75rem}
+.cs-list li::before{content:"";display:block;margin-top:.5rem;width:.75rem;height:.25rem;background:var(--ember);flex:none}
+.personas-grid{display:grid;gap:1.5rem}
+@media(min-width:768px){.personas-grid{grid-template-columns:1fr 1fr}}
+.persona{border-radius:1rem;border:1px solid var(--border);background:var(--card);padding:1.5rem}
+.persona .name{font-family:var(--font-display);font-size:1.5rem;color:var(--fg);font-weight:600}
+.persona .role{margin-top:.25rem;font-size:.875rem;color:var(--muted-fg)}
+.persona .blk{margin-top:1rem}
+.persona .k{font-family:var(--font-mono);font-size:.625rem;text-transform:uppercase;letter-spacing:.15em;color:var(--ember)}
+.persona .v{margin-top:.25rem;color:var(--fg);font-size:.875rem}
+.journey-table{overflow:hidden;border-radius:1rem;border:1px solid var(--border);width:100%}
+.journey-table table{width:100%;border-collapse:collapse;font-size:.875rem;text-align:left}
+.journey-table th{background:var(--muted);padding:1rem;font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.15em;color:var(--fg)}
+.journey-table td{padding:1rem;border-top:1px solid var(--border);color:var(--muted-fg)}
+.journey-table td.stage{color:var(--fg);font-weight:500}
+.journey-table td.feel{color:var(--ember)}
+.notes{border:1px dashed var(--border);background:var(--muted);border-radius:1rem;padding:1.5rem;color:var(--fg);font-size:.875rem}
+.notes .k{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--ember)}
+.notes ul{margin-top:.75rem;display:flex;flex-direction:column;gap:.5rem}
+
+.next-cs{max-width:72rem;margin:0 auto;padding:5rem 1.5rem}
+.next-cs .card{margin-top:1.5rem;display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem;border-radius:1.5rem;border:1px solid var(--border);background:var(--card);padding:2.5rem;transition:.2s}
+.next-cs .card:hover{border-color:rgba(0,0,0,.3)}
+.next-cs .work-cta{align-self:flex-start}
+@media(min-width:768px){
+  .next-cs .card{flex-direction:row;align-items:end}
+  .next-cs .work-cta{align-self:flex-end}
+}
+.next-cs h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:.75rem;font-size:3rem}
+.next-cs p{margin-top:.75rem;max-width:36rem;color:var(--muted-fg)}
+</style>
+</head>
+<body id="top">
+
+<header class="nav">
+  <div class="container nav-row">
+    <a class="brand" href="../index.html">Vignesh<em>.</em></a>
+    <nav class="nav-links">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#skills">Skills</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="../index.html#contact">Let's talk →</a>
+  </div>
+</header>
+
+<section class="section case-hero">
+  <div class="container-sm" style="padding:4rem 1.5rem 5rem">
+    <a class="back" href="../index.html">← All projects</a>
+    <div class="case-meta">
+      <span>Mobile App · Native iOS & Android</span><span class="sep"></span>
+      <span>3 Weeks</span><span class="sep"></span>
+      <span>UI/UX Designer</span>
+    </div>
+    <h1>Es para ti</h1>
+    <p class="tagline">On-the-Go Spiritual Sanctuary & Live Consulting Portal. A minimalist mobile viewport showcasing responsive native screens nested beautifully inside a contemporary iPhone mockup framework.</p>
+    <div class="case-cover">
+      <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80" alt="Es para ti Mobile App Interface Layout Mockup">
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">About Project</p></div>
+    <div class="cs-body">
+      <p>Es para ti is a thumb-optimized, highly interactive mobile application built to provide quick access to spiritual counselors. The interface focuses heavily on tactile responses, seamless slide-out menus, and quick-action communication components designed for private, secure, and stress-free user journeys.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Problem</p></div>
+    <div class="cs-body">
+      <p><strong>Severe Cognitive Overload & Hidden Navigation Hurdles:</strong> Users seeking on-the-go spiritual consultations experience heavy cognitive fatigue when browsing long, disorganized advisor directories on small viewports. Furthermore, traditional structures rely on fragmented, hidden navigations that obscure direct customer support channels, clunky interaction patterns for starting live phone consultations on the go, and lack tactile confirmation for sensitive privacy settings.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Solution</p></div>
+    <div class="cs-body">
+      <p><strong>Ergonomic Mobile Interventions:</strong></p>
+      <ul class="cs-list" style="margin-bottom: 2rem;">
+        <li><span><strong>Maximize Mobile Conversions:</strong> Implement clear, thumb-accessible call action components to dramatically boost instantaneous platform use.</span></li>
+        <li><span><strong>Maximize Engagement:</strong> Host the custom, localized Advisor-Quiz directly inside the dynamic scroll-feed area.</span></li>
+        <li><span><strong>Flawless Ergonomics:</strong> Position all key visual controls and actionable triggers inside standard ergonomic bottom thumb-interaction comfort zones.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">My Role</p></div>
+    <div class="cs-body">
+      <p><strong>UX/UI Designer (Mobile App Design)</strong></p>
+      <p>Led comprehensive research, tap-target optimization analysis, interface wireframing, high-density screen structuring, and tactile micro-prototype executions to streamline overall user navigation speed and feel.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">User research</p></div>
+    <div class="cs-body">
+      <p><strong>Rigorous Touchpoint & Usability Evaluations:</strong></p>
+      <p style="margin-bottom: 1.5rem;">To pinpoint core user drop-off triggers and structural layout vulnerabilities, we conducted dedicated exploratory research campaigns centering directly on handheld mobile mechanics:</p>
+      <ul class="cs-list" style="margin-bottom: 1.5rem;">
+        <li><span><strong>Guerrilla Usability Testing:</strong> Conducted direct testing sessions on physical mobile viewports to evaluate visual hierarchy and user navigation speeds.</span></li>
+        <li><span><strong>Mobile Tap-Target Analysis:</strong> Mapped interactive tap hotzones to optimize spacing and padding for standard hand sizes.</span></li>
+        <li><span><strong>Persona Empathy Mapping:</strong> Evaluated emotional states, cataloging specific user vulnerabilities and privacy expectations during consultation setup.</span></li>
+      </ul>
+      <p class="font-mono text-accent" style="font-size: 0.875rem;">Key Findings:</p>
+      <ul class="cs-list" style="margin-top: 0.5rem;">
+        <li><span>Mobile users demand rapid, single-tap solutions for selecting and connecting with an advisor.</span></li>
+        <li><span>The advisor selection quiz must stay front-and-center, requiring minimal scrolling steps to complete.</span></li>
+        <li><span>A persistent bottom navigation layout is critical to prevent screen drop-offs and navigation loss.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Personas</p></div>
+    <div class="cs-body">
+      <div class="personas-grid">
+        <div class="persona">
+          <p class="name">Sarah Beck, 29</p>
+          <p class="role">Freelance Digital Marketer (Mobile-First)</p>
+          <div class="blk">
+            <p class="k">Goals</p>
+            <p class="v">Wants private, swift, and completely secure live Tarot advice directly on her smartphone during short breaks.</p>
+          </div>
+          <div class="blk">
+            <p class="k">Pain Points</p>
+            <p class="v">Hidden pricing details, slow screen load times, and tricky navigation drawers that obscure help paths.</p>
+          </div>
+        </div>
+        <div class="persona">
+          <p class="name">Elena Vance, 34</p>
+          <p class="role">Live Spiritual Consultant</p>
+          <div class="blk">
+            <p class="k">Goals</p>
+            <p class="v">Wants clear visibility over incoming client inquiries, simplified availability triggers, and transparent session rates.</p>
+          </div>
+          <div class="blk">
+            <p class="k">Pain Points</p>
+            <p class="v">Complicated profile controls, missing connection status logs, and clunky layout panels on smaller viewports.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">User journey</p></div>
+    <div class="cs-body">
+      <div class="journey-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>Action</th>
+              <th>Feeling</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="stage">1. Launch Feed</td>
+              <td>User opens the app feed, greeted by a prominent matching quiz card banner.</td>
+              <td class="feel">Ready</td>
+            </tr>
+            <tr>
+              <td class="stage">2. Advisor Discovery</td>
+              <td>Views advisor availability markers featuring bold availability status badges.</td>
+              <td class="feel">Supported</td>
+            </tr>
+            <tr>
+              <td class="stage">3. Quiz Matching</td>
+              <td>Taps and completes the integrated, localized Advisor-Quiz directly in-line.</td>
+              <td class="feel">Guided</td>
+            </tr>
+            <tr>
+              <td class="stage">4. Checkout Init</td>
+              <td>Initiates advisor connection by tapping the thumb-optimized "Jetzt sprechen" button.</td>
+              <td class="feel">Anxious</td>
+            </tr>
+            <tr>
+              <td class="stage">5. Live Simulation</td>
+              <td>Views call connection metrics inside a full-screen, clean mobile overlay screen.</td>
+              <td class="feel">In Control</td>
+            </tr>
+            <tr>
+              <td class="stage">6. Success Logs</td>
+              <td>Receives secure confirmation of session details and tactile data protection checks.</td>
+              <td class="feel">Secure</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Mobile Hierarchy</p></div>
+    <div class="cs-body">
+      <p><strong>Information Architecture:</strong></p>
+      <ul class="cs-list" style="margin-bottom: 2rem;">
+        <li><span><strong>Sticky Top Action Row:</strong> Drawer Trigger (Hamburger Menu) → Brand Mark → Collapsible Inline Search Bar → Quick Account Management.</span></li>
+        <li><span><strong>Ergonomic Feed Structure:</strong> Hero Context → Inline Interactive Quiz Card Component → Stacked Adaptive Advisor List Cards → Core Value Props.</span></li>
+        <li><span><strong>Persistent Mobile Bottom Bar:</strong> Single-tap navigation mapping links to Home, Berater Directory, Live Sessions, Favorites, and Help desk.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Wireframes</p></div>
+    <div class="cs-body">
+      <p>Low-fidelity mobile frames designed specifically around a single-column layout, ensuring clear focal points and optimizing screen space for 4-inch to 6.7-inch screens. This tight format centers primary actions and retains ample breathing space around touch zones.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Design System</p></div>
+    <div class="cs-body">
+      <p>A mobile-optimized system prioritizing high visual contrast, intuitive spacing, and immediate accessibility cues.</p>
+      <div style="display: grid; gap: 2rem; grid-template-columns: 1fr 1fr; margin-top: 2rem;">
+        <div>
+          <p class="font-mono text-accent" style="font-size: 0.75rem; text-transform: uppercase;">Colors</p>
+          <p style="margin-top: 0.5rem; font-size: 0.875rem;">Optimized for mobile screen contrast ratios. Features deep Wine Burgundy (#800834) as a luxurious anchor, Soft Blush Rose (#FFF2F4) for premium calming surfaces, and bright Emerald Status Green (#10B981) for real-time status cues.</p>
+        </div>
+        <div>
+          <p class="font-mono text-accent" style="font-size: 0.75rem; text-transform: uppercase;">Typography Framework</p>
+          <ul class="cs-list" style="margin-top: 0.5rem; font-size: 0.875rem;">
+            <li><span><strong>Heading Styles:</strong> Scaled Playfair Display for clear headers.</span></li>
+            <li><span><strong>UI Controls & Body:</strong> Oversized Inter typography for crisp readability.</span></li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top: 2rem;">
+        <p class="font-mono text-accent" style="font-size: 0.75rem; text-transform: uppercase;">Tactile Components</p>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem;">Optimized tap button targets (48px × 48px minimum padding zone bounds) and smooth slide-out navigation drawers to prevent fat-finger mistakes on smaller touchscreens.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Final UI Screens</p></div>
+    <div class="cs-body">
+      <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+        <div>
+          <h3 class="font-display" style="font-size: 1.5rem; color: var(--fg);">1. The Scroll-Optimized Feed</h3>
+          <p style="margin-top: 0.5rem;">Houses all primary user conversion flows directly inside the main workspace, highlighting the embedded, smart Advisor-Quiz element as a highly visual matching banner.</p>
+        </div>
+        <div>
+          <h3 class="font-display" style="font-size: 1.5rem; color: var(--fg);">2. Live Call Simulation Interface</h3>
+          <p style="margin-top: 0.5rem;">Displays secure connection metrics visually once a user initiates an advisor session, offering live cost estimations and status feedback in a clear fullscreen overlay overlay.</p>
+        </div>
+        <div>
+          <h3 class="font-display" style="font-size: 1.5rem; color: var(--fg);">3. Tactical One-Handed Controls</h3>
+          <p style="margin-top: 0.5rem;">A persistent navigation bottom bar anchoring the core directory search, live sessions, favorited profiles, and user help desk buttons within quick reach of a single thumb swipe.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Key Features</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span><strong>In-Line Interactive Quiz Engine:</strong> Adapts inside the content list instantly based on tap gestures without requiring separate page refreshes.</span></li>
+        <li><span><strong>One-Handed Navigation Control:</strong> The persistent bottom bar puts core platform destinations easily within thumb's reach.</span></li>
+        <li><span><strong>Adaptive Status Indicators:</strong> Vibrant callouts quickly flag an advisor's availability status.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Prototype</p></div>
+    <div class="cs-body">
+      <p>Interactive mobile micro-prototypes highlighting swift slide-in hamburger configurations, tap-to-favorite toggles, and live call simulation flows. These flows help test on-the-go interactions, ensuring smooth transitions on lower-tier devices.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Challenges</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>Severe cognitive overload caused by trying to navigate massive text directories on compact mobile viewports.</span></li>
+        <li><span>Fragmented, hidden navigation links that hide client support options and delay query resolution.</span></li>
+        <li><span>Anxiety around live calling, specifically centering on hidden pricing information and session lengths.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Solutions</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>Embedded the interactive advisor selection quiz directly inside the top scroll-feed area, requiring zero secondary navigation.</span></li>
+        <li><span>Structured a highly visual, sticky navigation bottom bar to anchor high-frequency actions within easy reach of a thumb swipe.</span></li>
+        <li><span>Created a dedicated fullscreen call simulation layout displaying real-time session cost and connection duration indicators.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">OutCome & Impact</p></div>
+    <div class="cs-body">
+      <p>By optimizing mobile layouts and target areas specifically around ergonomics, the redesigned application significantly increases catalog engagement and cuts session setup delays:</p>
+      <ul class="cs-list" style="margin-top: 1rem;">
+        <li><span><strong>45% Surge in Conversions:</strong> Driven directly by the thumb-optimized "Jetzt sprechen" call button architecture.</span></li>
+        <li><span><strong>50% Lift in Quiz Completion Rates:</strong> Enabled by the simplified in-line interactive card structure.</span></li>
+        <li><span><strong>Frictionless On-the-Go Booking:</strong> Creating a highly private and secure sanctuary for swift client-advisor consulting sessions anywhere, anytime.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Addendum</p></div>
+    <div class="cs-body">
+      <div class="notes">
+        <p class="k">Data Privacy Shield</p>
+        <ul>
+          <li>• Every consultation channel, billing transaction, and personal message log utilizes high-grade secure end-to-end encryption pipelines to guarantee absolute anonymity and user data safety under strict privacy standards.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="next-cs">
+    <p class="eyebrow">Next case study</p>
+    <a class="card" href="foodie_case_study.html">
+      <div>
+        <p class="cs-label">Mobile · Directory Optimization</p>
+        <h3>Foodie</h3>
+        <p>A high-speed search index and multi-category filtering interface designed to let mobile users connect with specialized professional advisors in seconds.</p>
+      </div>
+      <span class="work-cta">Read next →</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container row">
+    <div>© <span id="year-span">2026</span> Vignesh M — Product Designer &amp; UI Developer, Chennai.</div>
+    <div class="links">
+  <a href="mailto:vigneshamutha2723@gmail.com">Email</a>
+<a href="tel:+916369856082">Phone</a>
+<a class="back-to-top" href="#top" aria-label="Back to top">↑</a>
+</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year-span').innerText = new Date().getFullYear();
+</script>
+</body>
+</html>

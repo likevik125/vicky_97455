@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zyra Scribe AI — Case study · Vignesh M</title>
+<meta name="description" content="Empowering clinicians to focus on patients, not paperwork, through real-time ambient AI transcription.">
+<meta property="og:title" content="Zyra Scribe AI — Case study · Vignesh M">
+<meta property="og:description" content="Empowering clinicians to focus on patients, not paperwork, through real-time ambient AI transcription.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --cream:oklch(0.972 0.012 85);
+  --ink:oklch(0.18 0.015 60);
+  --ember:oklch(0.58 0.16 42);
+  --ember-soft:oklch(0.85 0.06 55);
+  --hairline:oklch(0.85 0.015 75);
+  --muted:oklch(0.94 0.012 80);
+  --muted-fg:oklch(0.42 0.02 65);
+  --card:oklch(0.98 0.008 85);
+  --bg:var(--cream);
+  --fg:var(--ink);
+  --border:var(--hairline);
+  --radius:0.5rem;
+  --font-display:"Poppins",ui-sans-serif,system-ui,sans-serif;
+  --font-sans:"Inter",ui-sans-serif,system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;border-color:var(--border)}
+html{font-family:var(--font-sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-feature-settings:"ss01","cv11";line-height:1.5}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
+input,textarea{font:inherit}
+::selection{background:var(--ember);color:var(--cream)}
+ul{list-style:none}
+
+.font-display{font-family:var(--font-display);font-weight:600;letter-spacing:-0.03em}
+.font-mono{font-family:var(--font-mono)}
+.text-muted{color:var(--muted-fg)}
+.text-accent{color:var(--ember)}
+.italic{font-style:italic}
+.balance{text-wrap:balance}
+
+.container{max-width:80rem;margin:0 auto;padding:0 1.5rem}
+.container-sm{max-width:72rem;margin:0 auto;padding:0 1.5rem}
+
+.section{border-bottom:1px solid var(--border)}
+.section-inner{padding:6rem 0}
+@media(min-width:768px){.section-inner{padding:8rem 0}}
+
+.eyebrow{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.3em;color:var(--muted-fg);display:inline-flex;align-items:center;gap:.75rem}
+.eyebrow .rule{display:inline-block;width:2rem;height:1px;background:rgba(0,0,0,.35)}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:color-mix(in oklab,var(--cream) 85%, transparent);border-bottom:1px solid var(--border)}
+.nav-row{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-family:var(--font-display);font-size:1.25rem;font-weight:700;letter-spacing:-.02em}
+.brand em{color:var(--ember);font-style:italic}
+.nav-links{display:none;gap:2rem;font-size:.875rem}
+.nav-links a:hover{color:var(--ember)}
+@media(min-width:768px){.nav-links{display:flex}}
+.nav-cta{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);border-radius:9999px;padding:.5rem 1rem;font-size:.8125rem;transition:.2s}
+.nav-cta:hover{border-color:var(--ember);color:var(--ember)}
+
+/* Hero */
+.hero h1{font-family:var(--font-display);font-weight:600;letter-spacing:-0.03em;font-size:3rem;line-height:.95;max-width:60rem;margin-top:2rem}
+@media(min-width:768px){.hero h1{font-size:7rem}}
+.hero-row{display:grid;gap:2.5rem;margin-top:3rem}
+@media(min-width:768px){.hero-row{grid-template-columns:1.4fr 1fr;align-items:end}}
+.hero-desc{max-width:36rem;font-size:1.125rem;color:var(--muted-fg)}
+.hero-desc span{color:var(--fg)}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:9999px;padding:.75rem 1.5rem;font-size:.875rem;font-weight:500;transition:.2s}
+.btn-primary{background:var(--fg);color:var(--bg)}
+.btn-primary:hover{opacity:.9}
+.btn-outline{border:1px solid var(--border)}
+.btn-outline:hover{background:var(--muted)}
+.stats{margin-top:5rem;display:grid;gap:2rem;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--border);padding-top:2.5rem}
+@media(min-width:768px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat n{display:block}
+.stat .n{font-family:var(--font-display);font-size:3.75rem;line-height:1;font-weight:600;letter-spacing:-.03em}
+.stat p{margin-top:.75rem;font-size:.875rem;color:var(--muted-fg)}
+
+/* About */
+.about{display:grid;gap:4rem;padding:6rem 0}
+@media(min-width:768px){.about{grid-template-columns:1fr 1.6fr;padding:8rem 0}}
+.portrait{aspect-ratio:4/5;overflow:hidden;border-radius:1rem;background:var(--muted);margin-top:1.5rem}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.about-info{margin-top:2rem;font-size:.875rem}
+.about-info div{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:.75rem 0}
+.about-info dt{color:var(--muted-fg)}
+.about-info dd{font-weight:500}
+.about h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;font-size:2.5rem;line-height:1.05;text-wrap:balance}
+@media(min-width:768px){.about h2{font-size:4.5rem}}
+.about p{margin-top:1rem;color:var(--muted-fg);font-size:1.125rem}
+.skills-inline{margin-top:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:.75rem 1.5rem;font-size:.875rem}
+.skills-inline li{display:flex;align-items:center;gap:.5rem}
+.dot{width:.25rem;height:.25rem;border-radius:9999px;background:var(--ember)}
+
+/* Work */
+.work-header{display:flex;align-items:end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.work-header h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1rem;font-size:3rem}
+@media(min-width:768px){.work-header h2{font-size:4.5rem}}
+.work-list{margin-top:4rem;display:flex;flex-direction:column;gap:1.5rem}
+.work-card{display:grid;overflow:hidden;border-radius:1.5rem;border:1px solid var(--border);background:var(--card);transition:.2s}
+.work-card:hover{border-color:rgba(0,0,0,.3)}
+@media(min-width:768px){.work-card{grid-template-columns:1.2fr 1fr}}
+.work-img{aspect-ratio:4/3;overflow:hidden;background:var(--muted)}
+.work-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.work-card:hover .work-img img{transform:scale(1.03)}
+.work-body{display:flex;flex-direction:column;justify-content:space-between;gap:2.5rem;padding:2rem}
+@media(min-width:768px){.work-body{padding:3rem}}
+.work-meta{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-fg)}
+.work-body h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1.5rem;font-size:2rem;line-height:1.15}
+@media(min-width:768px){.work-body h3{font-size:2.5rem}}
+.work-body .tag{margin-top:1rem;color:var(--muted-fg)}
+.work-cta{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);border-radius:9999px;padding:.5rem 1rem;font-size:.75rem;font-weight:500;transition:.2s}
+.work-card:hover .work-cta{border-color:var(--ember);color:var(--ember)}
+
+/* Services grid */
+.services{margin-top:4rem;display:grid;gap:1px;overflow:hidden;border-radius:1.5rem;border:1px solid var(--border);background:var(--border)}
+@media(min-width:768px){.services{grid-template-columns:repeat(3,1fr)}}
+.service{background:var(--bg);padding:2rem;transition:background .2s}
+.service:hover{background:var(--muted)}
+.service-ico{width:2rem;height:2rem;border-radius:9999px;background:color-mix(in oklab,var(--ember) 12%,transparent);color:var(--ember);display:flex;align-items:center;justify-content:center}
+.service h3{margin-top:1.5rem;font-size:1.25rem;font-weight:600}
+.service p{margin-top:.75rem;font-size:.875rem;color:var(--muted-fg)}
+
+/* Skills grid */
+.skills-grid{margin-top:4rem;display:grid;gap:2.5rem}
+@media(min-width:640px){.skills-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.skills-grid{grid-template-columns:repeat(4,1fr)}}
+.skills-grid h4{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--ember)}
+.skills-grid ul{margin-top:1.25rem;display:flex;flex-direction:column;gap:.75rem}
+.skills-grid li{border-bottom:1px solid var(--border);padding-bottom:.75rem;font-size:.875rem}
+
+/* Process */
+.process-wrap{display:grid;gap:4rem}
+@media(min-width:768px){.process-wrap{grid-template-columns:1fr 1.4fr}}
+.process-wrap h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1rem;font-size:3rem}
+.process-list{display:flex;flex-direction:column;gap:1.5rem}
+.process-item{display:grid;grid-template-columns:auto 1fr;gap:1.5rem;border-bottom:1px solid var(--border);padding-bottom:1.5rem}
+.process-item:last-child{border-bottom:none}
+.process-n{font-family:var(--font-display);font-size:2.25rem;color:var(--ember);font-weight:600}
+.process-item h3{font-size:1.25rem;font-weight:600}
+.process-item p{margin-top:.5rem;color:var(--muted-fg)}
+
+/* Experience */
+.exp{margin-top:4rem}
+.exp-item{display:grid;gap:1.5rem;padding:2rem 0;border-top:1px solid var(--border)}
+.exp-item:first-child{border-top:none}
+@media(min-width:768px){.exp-item{grid-template-columns:220px 1fr}}
+.exp-range{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-fg)}
+.exp-kind{display:inline-flex;border:1px solid var(--border);border-radius:9999px;padding:.125rem .5rem;font-size:.625rem;margin-top:.5rem}
+.exp-item h3{font-size:1.5rem;font-weight:600}
+.exp-item p{margin-top:.75rem;max-width:48rem;color:var(--muted-fg)}
+
+/* Education cols */
+.cols3{display:grid;gap:4rem;padding:6rem 0}
+@media(min-width:768px){.cols3{grid-template-columns:repeat(3,1fr);padding:8rem 0}}
+.cols3 h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1rem;font-size:1.875rem}
+.cols3 ul{margin-top:2rem;display:flex;flex-direction:column;gap:1.5rem}
+.cols3 li.edu{border-bottom:1px solid var(--border);padding-bottom:1.5rem}
+.edu p.year{font-family:var(--font-mono);font-size:.75rem;color:var(--muted-fg)}
+.edu p.title{margin-top:.5rem;font-weight:600}
+.edu p.place{font-size:.875rem;color:var(--muted-fg)}
+.edu p.body{margin-top:.5rem;font-size:.875rem;color:var(--muted-fg)}
+.dashed{border:1px dashed var(--border);border-radius:.75rem;padding:1rem;color:var(--muted-fg);font-size:.875rem}
+
+/* Why me */
+.why{background:var(--muted)}
+.why h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1rem;max-width:48rem;font-size:3rem;text-wrap:balance}
+@media(min-width:768px){.why h2{font-size:4.5rem}}
+.why-grid{margin-top:4rem;display:grid;gap:2rem}
+@media(min-width:768px){.why-grid{grid-template-columns:repeat(4,1fr)}}
+.why-card{border-radius:1rem;border:1px solid var(--border);background:var(--bg);padding:2rem}
+.why-card h3{font-size:1.125rem;font-weight:600}
+.why-card p{margin-top:.75rem;font-size:.875rem;color:var(--muted-fg)}
+
+/* Contact */
+.contact h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1.5rem;max-width:56rem;font-size:3.75rem;line-height:.95;text-wrap:balance}
+@media(min-width:768px){.contact h2{font-size:8rem}}
+.contact .lead{margin-top:2rem;max-width:36rem;font-size:1.125rem;color:var(--muted-fg)}
+.contact-grid{margin-top:4rem;display:grid;gap:2.5rem}
+@media(min-width:768px){.contact-grid{grid-template-columns:1fr 1fr}}
+.contact-links a,.contact-links div{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);padding:1rem 0;font-size:1.125rem;transition:color .2s}
+.contact-links a:hover{color:var(--ember)}
+.form{display:flex;flex-direction:column;gap:1rem}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form input,.form textarea{width:100%;border:1px solid var(--border);background:var(--bg);border-radius:.5rem;padding:.75rem 1rem;font-size:.875rem;outline:none;transition:border-color .2s;color:var(--fg)}
+.form input:focus,.form textarea:focus{border-color:var(--ember)}
+.form button{border-radius:9999px;background:var(--fg);color:var(--bg);padding:.75rem;font-size:.875rem;font-weight:500;transition:opacity .2s}
+.form button:hover{opacity:.9}
+
+/* Footer */
+footer{padding:3rem 0;font-size:.875rem;color:var(--muted-fg)}
+footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;align-items:center}
+footer .links{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:flex-end}
+footer .links a{display:inline-flex;align-items:center;white-space:nowrap}
+footer .links .back-to-top{margin-left:auto;width:2.5rem;height:2.5rem;border-radius:9999px;border:1px solid var(--border);background:var(--card);color:var(--fg);font-size:1.125rem;justify-content:center;flex-shrink:0}
+footer .links .back-to-top:hover{border-color:var(--ember);color:var(--ember)}
+footer .links a:hover{color:var(--ember)}
+
+/* Case study */
+.case-hero .back{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-fg)}
+.case-hero .back:hover{color:var(--ember)}
+.case-meta{margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:1rem;font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-fg);align-items:center}
+.case-meta .sep{width:.25rem;height:.25rem;border-radius:9999px;background:var(--muted-fg)}
+.case-hero h1{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:2rem;font-size:3.75rem;line-height:.95;text-wrap:balance}
+@media(min-width:768px){.case-hero h1{font-size:6rem}}
+.case-hero .tagline{margin-top:1.5rem;max-width:48rem;font-size:1.25rem;color:var(--muted-fg)}
+.case-cover{aspect-ratio:16/10;overflow:hidden;border-radius:1.5rem;border:1px solid var(--border);background:var(--muted);margin-top:2.5rem}
+.case-cover img{width:100%;height:100%;object-fit:cover}
+
+.cs-section{border-bottom:1px solid var(--border);padding:4rem 0}
+@media(min-width:768px){.cs-section{padding:5rem 0}}
+.cs-grid{display:grid;gap:2.5rem;max-width:72rem;margin:0 auto;padding:0 1.5rem}
+@media(min-width:768px){.cs-grid{grid-template-columns:220px 1fr}}
+.cs-label{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.3em;color:var(--ember)}
+.cs-title{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:.75rem;font-size:1.875rem;line-height:1.15}
+.cs-body{max-width:none;font-size:1.125rem;color:var(--muted-fg)}
+.cs-body p+*{margin-top:1rem}
+.cs-list{display:flex;flex-direction:column;gap:.75rem}
+.cs-list li{display:flex;gap:.75rem}
+.cs-list li::before{content:"";display:block;margin-top:.5rem;width:.75rem;height:.25rem;background:var(--ember);flex:none}
+.personas-grid{display:grid;gap:1.5rem}
+@media(min-width:768px){.personas-grid{grid-template-columns:1fr 1fr}}
+.persona{border-radius:1rem;border:1px solid var(--border);background:var(--card);padding:1.5rem}
+.persona .name{font-family:var(--font-display);font-size:1.5rem;color:var(--fg);font-weight:600}
+.persona .role{margin-top:.25rem;font-size:.875rem;color:var(--muted-fg)}
+.persona .blk{margin-top:1rem}
+.persona .k{font-family:var(--font-mono);font-size:.625rem;text-transform:uppercase;letter-spacing:.15em;color:var(--ember)}
+.persona .v{margin-top:.25rem;color:var(--fg);font-size:.875rem}
+.journey-table{overflow:hidden;border-radius:1rem;border:1px solid var(--border);width:100%}
+.journey-table table{width:100%;border-collapse:collapse;font-size:.875rem;text-align:left}
+.journey-table th{background:var(--muted);padding:1rem;font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.15em;color:var(--fg)}
+.journey-table td{padding:1rem;border-top:1px solid var(--border);color:var(--muted-fg)}
+.journey-table td.stage{color:var(--fg);font-weight:500}
+.journey-table td.feel{color:var(--ember)}
+.notes{border:1px dashed var(--border);background:var(--muted);border-radius:1rem;padding:1.5rem;color:var(--fg);font-size:.875rem}
+.notes .k{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--ember)}
+.notes ul{margin-top:.75rem;display:flex;flex-direction:column;gap:.5rem}
+
+.next-cs{max-width:72rem;margin:0 auto;padding:5rem 1.5rem}
+.next-cs .card{margin-top:1.5rem;display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem;border-radius:1.5rem;border:1px solid var(--border);background:var(--card);padding:2.5rem;transition:.2s}
+.next-cs .card:hover{border-color:rgba(0,0,0,.3)}
+.next-cs .work-cta{align-self:flex-start}
+@media(min-width:768px){
+  .next-cs .card{flex-direction:row;align-items:end}
+  .next-cs .work-cta{align-self:flex-end}
+}
+.next-cs h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:.75rem;font-size:3rem}
+.next-cs p{margin-top:.75rem;max-width:36rem;color:var(--muted-fg)}
+</style>
+</head>
+<body id="top">
+<header class="nav">
+  <div class="container nav-row">
+    <a class="brand" href="../index.html">Vignesh<em>.</em></a>
+    <nav class="nav-links">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#skills">Skills</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="../index.html#contact">Let's talk →</a>
+  </div>
+</header>
+
+<section class="section case-hero">
+  <div class="container-sm" style="padding:4rem 1.5rem 5rem">
+    <a class="back" href="../index.html">← All projects</a>
+    <div class="case-meta">
+      <span>Web · Ambient Clinical AI</span><span class="sep"></span>
+      <span>2026</span><span class="sep"></span>
+      <span>Lead UX/UI Designer</span>
+    </div>
+    <h1>Zyra Scribe AI</h1>
+    <p class="tagline">Empowering clinicians to focus on patients, not paperwork, through real-time ambient AI transcription and structured clinical summaries.</p>
+    <div class="case-cover">
+      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80" alt="Zyra Scribe AI Clinical Dashboard Design Mockup">
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Overview</p></div>
+    <div class="cs-body">
+      <p>Zyra Scribe AI is an AI-assisted workspace that securely listens to patient encounters (both in-person and virtual), extracts essential medical facts, and automatically structures them into validated medical frameworks like SOAP notes or customized Clinical Notes. It streamlines administrative workflows, allowing physicians to review, edit, and export flawless documentation within seconds.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Problem</p></div>
+    <div class="cs-body">
+      <p>Healthcare professionals spend an average of two hours on Electronic Health Record (EHR) documentation for every one hour of direct patient care. This administrative burden is a leading driver of clinician burnout, localized data fragmentation, and decreased patient satisfaction during visits due to "screen-staring."</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Goals</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>Empower clinicians to focus entirely on patients, not paperwork, through real-time ambient AI transcription.</span></li>
+        <li><span>Collect essential clinician credentials and securely onboard healthcare providers onto Zyra Scribe AI with minimal step-latency.</span></li>
+        <li><span>Provide frictionless re-entry into high-velocity clinical environments without security compromises.</span></li>
+        <li><span>Design immediate, safe recovery pathways if credentials are forgotten during hectic, back-to-back shifts.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Role</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>Owned end-to-end UX/UI, transitioning complex clinical workflows into visual healthcare patterns.</span></li>
+        <li><span>Constructed the credential authentication gateways and simplified user security entry points.</span></li>
+        <li><span>Engineered the ambient voice session interface, dynamic waveforms, and multi-pane workspace shells.</span></li>
+        <li><span>Built and tested interactive template-building engines and responsive visual SOAP note modules.</span></li>
+        <li><span>Delivered accessible frontend specifications and high-fidelity layouts mapped for EHR-compatible frameworks.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Target users</p></div>
+    <div class="cs-body">
+      <p>Healthcare practitioners, primary care physicians, and clinical specialists operating within fast-paced, high-velocity healthcare facilities who need immediate, reliable tools to record encounters and generate accurate summaries effortlessly.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Research</p></div>
+    <div class="cs-body">
+      <p>Observed clinical environments first-hand during active physician shifts. Audited the standard credential submission workflows and analyzed friction points that delayed clinical practitioners during high-stress patient care transitions. Conducted 1-on-1 interviews with doctors to target the specific causes of digital documentation fatigue.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Personas</p></div>
+    <div class="cs-body">
+      <div class="personas-grid">
+        <div class="persona">
+          <p class="name">Dr. Priya, 38</p>
+          <p class="role">Working Clinical Specialist</p>
+          <div class="blk">
+            <p class="k">Needs</p>
+            <p class="v">Frictionless re-entry into dashboards, swift credential recovery, and structured documentation on hectic days.</p>
+          </div>
+          <div class="blk">
+            <p class="k">Frustrations</p>
+            <p class="v">Endless administrative login delays, screen-staring during visits, and lengthy custom template layouts.</p>
+          </div>
+        </div>
+        <div class="persona">
+          <p class="name">Dr. Arjun, 45</p>
+          <p class="role">High-Velocity Family Physician</p>
+          <div class="blk">
+            <p class="k">Needs</p>
+            <p class="v">Real-time confirmation that audio data is recording correctly, plus direct, easy edit pathways for SOAP files.</p>
+          </div>
+          <div class="blk">
+            <p class="k">Frustrations</p>
+            <p class="v">Inflexible electronic templates, manual transcription typing, and losing direct visual connection with patients.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Pain points</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>Lengthy credential screens increase entry latency when entering high-pressure wards.</span></li>
+        <li><span>Lack of visible recording states leaves clinicians unsure if conversations are accurately ingested.</span></li>
+        <li><span>Pre-made medical formats fail to adapt to specialized physician preferences and medical practices.</span></li>
+        <li><span>Forgotten credentials during busy shifts lock clinicians out of active patient queues.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">User journey</p></div>
+    <div class="cs-body">
+      <div class="journey-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>Action</th>
+              <th>Feeling</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="stage">1. Authenticate</td>
+              <td>Enters credentials on the light-purple vertical login card.</td>
+              <td class="feel">Reassured</td>
+            </tr>
+            <tr>
+              <td class="stage">2. Capture</td>
+              <td>Activates ambient engine room to record natural patient discussions.</td>
+              <td class="feel">Focused</td>
+            </tr>
+            <tr>
+              <td class="stage">3. Structure</td>
+              <td>Observes live waveform states and dynamic transcription.</td>
+              <td class="feel">Confident</td>
+            </tr>
+            <tr>
+              <td class="stage">4. Format</td>
+              <td>Selects matching SOAP template layout from the workspace.</td>
+              <td class="feel">In Control</td>
+            </tr>
+            <tr>
+              <td class="stage">5. Review</td>
+              <td>Edits metadata tags and syncs finalized summaries back to the EHR.</td>
+              <td class="feel">Delighted</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Information architecture</p></div>
+    <div class="cs-body">
+      <p>A unified navigation structure linking the central clinical engine room (recording dashboards, microphones, live waveforms), the specialized template manager (custom layouts, community gallery, authoring screens), and the clinical settings panel for verification and user details.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Competitive analysis</p></div>
+    <div class="cs-body">
+      <p>Mapped existing medical dictation programs, transcription services, and EHR plugins. Identified vital gaps in secure mobile re-entry speeds, template adaptation flexibility, and custom text-mapping features for professional clinician workflows.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Design decisions</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>A clean, vertical authentication card centered over a soft light-purple abstract background with prominent purple CTA buttons.</span></li>
+        <li><span>Stylized clinical cross/plus icon located top-center to establish direct medical brand trustworthiness.</span></li>
+        <li><span>A split dual-pane dashboard containing the formatted SOAP Note preview on the right with navigation history on the left.</span></li>
+        <li><span>A dedicated template gallery showcasing modular, white layout cards with views tracking and search fields.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Wireframes</p></div>
+    <div class="cs-body">
+      <p>Drafted low-fidelity concepts targeting the clinical interface split. Evaluated balanced dual-pane workspaces displaying indexed menus beside active physical medical charts to optimize clinician data density and readability.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Visual design</p></div>
+    <div class="cs-body">
+      <p>Clean, focus-driven system: generous breathing room, high-contrast typography, and intuitive functional icons (microphones, waveforms, document paperclips). Accent elements guide clinicians straight toward primary actions without cognitive distraction.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Design system</p></div>
+    <div class="cs-body">
+      <p>Developed responsive, medical-grade web components, including input forms, interactive metadata fields, microphone states, and specialized checkboxes. Standardized text-mapping inputs ensure seamless developer handover and fast implementation.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Prototype</p></div>
+    <div class="cs-body">
+      <p>Assembled an interactive dashboard flow simulating live ambient clinical session workflows. Tested key paths including onboarding credentials, recording voice triggers, formatting custom layouts, and editing text expansions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Accessibility</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>W3C-compliant color contrasts for all audio recording states and waveforms.</span></li>
+        <li><span>Large, responsive click-targets for high-pressure, rapid physical environments.</span></li>
+        <li><span>Logical focus order across clinical metadata input modules and edit sheets.</span></li>
+        <li><span>Secure alternate authentication routes optimized for screen-reader workflows.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Developer handoff</p></div>
+    <div class="cs-body">
+      <p>Delivered dynamic components outlining active recording micro-states, secure entry forms, and physical preview sheets. Held walk-throughs to coordinate real-time transcription rendering behaviors and token-based layout styling.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Challenges</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>Minimizing security-step latency during intense physician shifts.</span></li>
+        <li><span>Balancing extensive clinical information within a dual-pane workspace.</span></li>
+        <li><span>Providing flexible custom layout tools without overwhelming non-technical users.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Solutions</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>A secure, streamlined access point designed to return clinicians directly to their dashboards safely.</span></li>
+        <li><span>A split-pane screen highlighting active transcripts, demographic fields, and mic state indicators dynamically.</span></li>
+        <li><span>An all-in-one metadata authoring panel with clear title inputs, structural selectors, and text guidelines.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Results</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>Clinicians can explore pre-made templates in an organized gallery framework.</span></li>
+        <li><span>A clean text-mapping workbench allows instant setup of customized text-expansion rules.</span></li>
+        <li><span>Onboarding credential forms mapped to minimize step latency and security friction.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Impact</p></div>
+    <div class="cs-body">
+      <p>Zyra Scribe AI completely eliminates manual typing during live clinical consultations, boosting direct face-to-face patient engagement and significantly lowering administrative burnout.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Key learnings</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>A secure, fast re-entry gateway drastically reduces workflow stress during clinical shifts.</span></li>
+        <li><span>Visual indicators like active microphone waves provide important reassurance of systems processing.</span></li>
+        <li><span>Physicians value having editable template configurations over static generic notes.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Future improvements</p></div>
+    <div class="cs-body">
+      <ul class="cs-list">
+        <li><span>Expanded community templates showing clinical usage metrics and tracking.</span></li>
+        <li><span>Deeper text-mapping tools targeting automated prescription and medication guidelines.</span></li>
+        <li><span>Adaptive workspace layouts matching local physical medical specialties automatically.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="cs-grid">
+    <div><p class="cs-label">Notes to add</p></div>
+    <div class="cs-body">
+      <div class="notes">
+        <p class="k">Missing from source</p>
+        <ul>
+          <li>• Quantitative post-launch metrics are currently restricted pending official clinical trial validation studies.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="next-cs">
+    <p class="eyebrow">Next case study</p>
+    <a class="card" href="tech_academy_brochure_portfolio.html">
+      <div>
+        <p class="cs-label">Tech Academy Brochure · Course</p>
+        <h3>Academy Brochure</h3>
+        <p>Tech Academy is an online learning platform designed to help students and professionals build in-demand technology skills through interactive courses and hands-on learning. It offers a seamless and engaging educational experience.</p>
+      </div>
+      <span class="work-cta">Read next →</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container row">
+    <div>© <span id="year-span">2026</span> Vignesh M — Product Designer & UI Developer, Chennai.</div>
+    <div class="links">
+  <a href="mailto:vigneshamutha2723@gmail.com">Email</a>
+<a href="tel:+916369856082">Phone</a>
+<a class="back-to-top" href="#top" aria-label="Back to top">↑</a>
+</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year-span').innerText = new Date().getFullYear();
+</script>
+</body>
+</html>

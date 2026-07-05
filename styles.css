@@ -1,0 +1,611 @@
+
+:root{
+  --cream:oklch(0.972 0.012 85);
+  --ink:oklch(0.18 0.015 60);
+  --ember:oklch(0.58 0.16 42);
+  --ember-soft:oklch(0.85 0.06 55);
+  --hairline:oklch(0.85 0.015 75);
+  --muted:oklch(0.94 0.012 80);
+  --muted-fg:oklch(0.42 0.02 65);
+  --card:oklch(0.98 0.008 85);
+  --bg:var(--cream);
+  --fg:var(--ink);
+  --border:var(--hairline);
+  --radius:0.5rem;
+  --font-display:"Poppins",ui-sans-serif,system-ui,sans-serif;
+  --font-sans:"Inter",ui-sans-serif,system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;border-color:var(--border)}
+html{font-family:var(--font-sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-feature-settings:"ss01","cv11";line-height:1.5}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
+input,textarea{font:inherit}
+::selection{background:var(--ember);color:var(--cream)}
+ul{list-style:none}
+
+.font-display{font-family:var(--font-display);font-weight:600;letter-spacing:-0.03em}
+.font-mono{font-family:var(--font-mono)}
+.text-muted{color:var(--muted-fg)}
+.text-accent{color:var(--ember)}
+.italic{font-style:italic}
+.balance{text-wrap:balance}
+
+.container{max-width:80rem;margin:0 auto;padding:0 1.5rem}
+.container-sm{max-width:72rem;margin:0 auto;padding:0 1.5rem}
+
+.section{border-bottom:1px solid var(--border)}
+.section-inner{padding:6rem 0}
+@media(min-width:768px){.section-inner{padding:8rem 0}}
+
+.eyebrow{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.3em;color:var(--muted-fg);display:inline-flex;align-items:center;gap:.75rem}
+.eyebrow .rule{display:inline-block;width:2rem;height:1px;background:rgba(0,0,0,.35)}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:color-mix(in oklab,var(--cream) 85%, transparent);border-bottom:1px solid var(--border)}
+.nav-row{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-family:var(--font-display);font-size:1.25rem;font-weight:700;letter-spacing:-.02em}
+.brand em{color:var(--ember);font-style:italic}
+.nav-links{display:none;gap:2rem;font-size:.875rem}
+.nav-links a:hover{color:var(--ember)}
+@media(min-width:768px){.nav-links{display:flex}}
+.nav-cta{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);border-radius:9999px;padding:.5rem 1rem;font-size:.8125rem;transition:.2s}
+.nav-cta:hover{border-color:var(--ember);color:var(--ember)}
+
+/* Hero */
+.hero h1{font-family:var(--font-display);font-weight:600;letter-spacing:-0.03em;font-size:3rem;line-height:.95;max-width:60rem;margin-top:2rem}
+@media(min-width:768px){.hero h1{font-size:7rem}}
+.hero-row{display:grid;gap:2.5rem;margin-top:3rem}
+@media(min-width:768px){.hero-row{grid-template-columns:1.4fr 1fr;align-items:end}}
+.hero-desc{max-width:36rem;font-size:1.125rem;color:var(--muted-fg)}
+.hero-desc span{color:var(--fg)}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:9999px;padding:.75rem 1.5rem;font-size:.875rem;font-weight:500;transition:.2s}
+.btn-primary{background:var(--fg);color:var(--bg)}
+.btn-primary:hover{opacity:.9}
+.btn-outline{border:1px solid var(--border)}
+.btn-outline:hover{background:var(--muted)}
+.stats{margin-top:5rem;display:grid;gap:2rem;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--border);padding-top:2.5rem}
+@media(min-width:768px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat n{display:block}
+.stat .n{font-family:var(--font-display);font-size:3.75rem;line-height:1;font-weight:600;letter-spacing:-.03em}
+.stat p{margin-top:.75rem;font-size:.875rem;color:var(--muted-fg)}
+
+/* Marquee */
+.marquee{overflow:hidden;border-top:1px solid var(--border);padding:1.5rem 0}
+.marquee-track{display:flex;gap:3rem;white-space:nowrap;font-family:var(--font-display);font-size:2.25rem;color:var(--muted-fg);animation:marquee 40s linear infinite;width:max-content}
+.marquee-track span{display:inline-flex;align-items:center;gap:3rem}
+.marquee-track .star{color:var(--ember)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* About */
+.about{display:grid;gap:4rem;padding:6rem 0}
+@media(min-width:768px){.about{grid-template-columns:1fr 1.6fr;padding:8rem 0}}
+.portrait{aspect-ratio:4/5;overflow:hidden;border-radius:1rem;background:var(--muted);margin-top:1.5rem}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.about-info{margin-top:2rem;font-size:.875rem}
+.about-info div{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:.75rem 0}
+.about-info dt{color:var(--muted-fg)}
+.about-info dd{font-weight:500}
+.about h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;font-size:2.5rem;line-height:1.05;text-wrap:balance}
+@media(min-width:768px){.about h2{font-size:4.5rem}}
+.about p{margin-top:1rem;color:var(--muted-fg);font-size:1.125rem}
+.skills-inline{margin-top:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:.75rem 1.5rem;font-size:.875rem}
+.skills-inline li{display:flex;align-items:center;gap:.5rem}
+.dot{width:.25rem;height:.25rem;border-radius:9999px;background:var(--ember)}
+
+/* Work */
+.work-header{display:flex;align-items:end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.work-header h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1rem;font-size:3rem}
+@media(min-width:768px){.work-header h2{font-size:4.5rem}}
+/* Infinite Marquee Carousel */
+.work-list-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 2.5rem 0;
+  margin-top: 4rem;
+}
+.work-list-wrapper::before,
+.work-list-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 15%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.work-list-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
+}
+.work-list-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
+}
+.work-list {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: marquee 60s linear infinite;
+}
+.work-list:hover {
+  animation-play-state: paused;
+}
+.work-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  width: 280px;
+  height: 420px;
+  flex-shrink: 0;
+  /* ADDED: box-shadow to existing transition list for soft-shadow hover animation */
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+@media(min-width: 480px) {
+  .work-card {
+    width: 340px;
+    height: 480px;
+  }
+}
+@media(min-width: 768px) {
+  .work-card {
+    width: 420px;
+    height: 540px;
+  }
+}
+.work-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0,0,0,.3);
+  /* ADDED: soft shadow animation on hover */
+  box-shadow: 0 24px 48px -24px rgba(0,0,0,.25);
+}
+.work-img {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--muted);
+}
+.work-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+.work-card:hover .work-img img {
+  transform: scale(1.03);
+}
+.work-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  flex: 1;
+}
+.work-meta{display:flex;justify-content:space-between;gap:.75rem;flex-wrap:wrap;font-family:var(--font-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-fg)}
+.work-body h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:.25rem;font-size:1.35rem;line-height:1.15}
+.work-body .tag{margin-top:.25rem;color:var(--muted-fg);font-size:.9rem;line-height:1.55}
+.work-cta{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);border-radius:9999px;padding:.4rem .8rem;font-size:.72rem;font-weight:500;transition:.2s;align-self:flex-start}
+.work-card:hover .work-cta{border-color:var(--ember);color:var(--ember)}
+@media(min-width:768px){.work-body{padding:1.5rem}.work-body h3{font-size:1.5rem}}
+
+@keyframes slideFromRight{from{opacity:0;transform:translateX(2rem)}to{opacity:1;transform:translateX(0)}}
+
+/* Services grid — CHANGED: each service is now its own separate box */
+.services{margin-top:4rem;display:grid;gap:1.5rem}
+@media(min-width:768px){.services{grid-template-columns:repeat(3,1fr)}}
+.service{background:var(--bg);padding:2rem;border:1px solid var(--border);border-radius:1rem;transition:background .2s}
+.service:hover{background:var(--muted)}
+.service-ico{width:2rem;height:2rem;border-radius:9999px;background:color-mix(in oklab,var(--ember) 12%,transparent);color:var(--ember);display:flex;align-items:center;justify-content:center;float:left;margin-right:1rem}
+.service h3{margin-top:0;line-height:2rem;font-size:1.25rem;font-weight:600}
+.service p{clear:both;margin-top:1rem;font-size:.875rem;color:var(--muted-fg)}
+
+/* Skills grid */
+.skills-grid{margin-top:4rem;display:grid;gap:2.5rem}
+@media(min-width:640px){.skills-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.skills-grid{grid-template-columns:repeat(4,1fr)}}
+.skills-grid h4{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--ember)}
+.skills-grid ul{margin-top:1.25rem;display:flex;flex-direction:column;gap:.75rem}
+.skills-grid li{border-bottom:1px solid var(--border);padding-bottom:.75rem;font-size:.875rem}
+
+/* Process */
+/* CHANGED: heading now sits full-width on top, columns stack below it */
+.process-wrap{display:grid;gap:2.5rem}
+.process-wrap h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1rem;font-size:3rem}
+/* two side-by-side columns of 5 process items each */
+.process-columns{display:grid;gap:1.5rem}
+@media(min-width:640px){.process-columns{grid-template-columns:1fr 1fr}}
+.process-list{display:flex;flex-direction:column;gap:1.5rem;border:1px solid var(--border);border-radius:1rem;padding:1.5rem}
+.process-item{display:grid;grid-template-columns:auto 1fr;gap:1.5rem;border-bottom:1px solid var(--border);padding-bottom:1.5rem;min-height:8.5rem}
+.process-item:last-child{border-bottom:none}
+.process-n{font-family:var(--font-display);font-size:2.25rem;color:var(--ember);font-weight:600}
+.process-item h3{font-size:1.25rem;font-weight:600}
+.process-item p{margin-top:.5rem;color:var(--muted-fg)}
+
+/* Experience */
+.exp{margin-top:4rem}
+.exp-item{display:grid;gap:1.5rem;padding:2rem 0;border-top:1px solid var(--border)}
+.exp-item:first-child{border-top:none}
+@media(min-width:768px){.exp-item{grid-template-columns:220px 1fr}}
+.exp-range{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-fg)}
+.exp-kind{display:inline-flex;border:1px solid var(--border);border-radius:9999px;padding:.125rem .5rem;font-size:.625rem;margin-top:.5rem}
+.exp-item h3{font-size:1.5rem;font-weight:600}
+.exp-item p{margin-top:.75rem;max-width:48rem;color:var(--muted-fg)}
+
+/* Education cols */
+.cols3{display:grid;gap:4rem;padding:6rem 0}
+@media(min-width:768px){.cols3{grid-template-columns:repeat(3,1fr);padding:8rem 0}}
+.cols3 h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1rem;font-size:1.875rem}
+.cols3 ul{margin-top:2rem;display:flex;flex-direction:column;gap:1.5rem}
+.cols3 li.edu{border-bottom:1px solid var(--border);padding-bottom:1.5rem}
+.edu p.year{font-family:var(--font-mono);font-size:.75rem;color:var(--muted-fg)}
+.edu p.title{margin-top:.5rem;font-weight:600}
+.edu p.place{font-size:.875rem;color:var(--muted-fg)}
+.edu p.body{margin-top:.5rem;font-size:.875rem;color:var(--muted-fg)}
+.dashed{border:1px dashed var(--border);border-radius:.75rem;padding:1rem;color:var(--muted-fg);font-size:.875rem}
+
+/* Why me */
+.why{background:var(--muted)}
+.why h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1rem;max-width:48rem;font-size:3rem;text-wrap:balance}
+@media(min-width:768px){.why h2{font-size:4.5rem}}
+/* CHANGED: why-grid is now an auto-rotating slide marquee (was a static grid) */
+.why-grid-wrapper{position:relative;width:100%;overflow:hidden;margin-top:4rem;padding:.5rem 0}
+.why-grid-wrapper::before,.why-grid-wrapper::after{content:"";position:absolute;top:0;width:10%;height:100%;z-index:2;pointer-events:none}
+.why-grid-wrapper::before{left:0;background:linear-gradient(to right, var(--bg) 0%, transparent 100%)}
+.why-grid-wrapper::after{right:0;background:linear-gradient(to left, var(--bg) 0%, transparent 100%)}
+.why-grid{display:flex;gap:2rem;width:max-content;flex-wrap:nowrap;animation:marquee 26s linear infinite}
+.why-grid:hover{animation-play-state:paused}
+.why-card{border-radius:1rem;border:1px solid var(--border);background:var(--bg);padding:2rem;flex-shrink:0;width:16rem}
+@media(min-width:768px){.why-card{width:19rem}}
+.why-card h3{font-size:1.125rem;font-weight:600}
+.why-card p{margin-top:.75rem;font-size:.875rem;color:var(--muted-fg)}
+
+/* Contact */
+.contact h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:1.5rem;max-width:56rem;font-size:3.75rem;line-height:.95;text-wrap:balance}
+@media(min-width:768px){.contact h2{font-size:8rem}}
+.contact .lead{margin-top:2rem;max-width:36rem;font-size:1.125rem;color:var(--muted-fg)}
+.contact-grid{margin-top:4rem;display:grid;gap:2.5rem}
+@media(min-width:768px){.contact-grid{grid-template-columns:1fr 1fr}}
+.contact-links a,.contact-links div{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);padding:1rem 0;font-size:1.125rem;transition:color .2s}
+.contact-links a:hover{color:var(--ember)}
+.form{display:flex;flex-direction:column;gap:1rem}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form input,.form textarea{width:100%;border:1px solid var(--border);background:var(--bg);border-radius:.5rem;padding:.75rem 1rem;font-size:.875rem;outline:none;transition:border-color .2s;color:var(--fg)}
+.form input:focus,.form textarea:focus{border-color:var(--ember)}
+.form button{border-radius:9999px;background:var(--fg);color:var(--bg);padding:.75rem;font-size:.875rem;font-weight:500;transition:opacity .2s}
+.form button:hover{opacity:.9}
+
+/* Footer */
+footer{padding:3rem 0;font-size:.875rem;color:var(--muted-fg)}
+footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;align-items:center}
+footer .links{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:flex-end}
+footer .links a{display:inline-flex;align-items:center;white-space:nowrap}
+footer .links .back-to-top{margin-left:auto;width:2.5rem;height:2.5rem;border-radius:9999px;border:1px solid var(--border);background:var(--card);color:var(--fg);font-size:1.125rem;justify-content:center;flex-shrink:0}
+footer .links .back-to-top:hover{border-color:var(--ember);color:var(--ember)}
+footer .links a:hover{color:var(--ember)}
+
+.back-top-section{padding:2rem 0}
+.back-to-top{display:inline-flex;align-items:center;justify-content:center;width:3rem;height:3rem;border-radius:9999px;border:1px solid var(--border);background:var(--card);color:var(--fg);font-size:1.25rem;transition:.2s}
+.back-to-top:hover{border-color:var(--ember);color:var(--ember)}
+
+
+/* Case study */
+.case-hero .back{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-fg)}
+.case-hero .back:hover{color:var(--ember)}
+.case-meta{margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:1rem;font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-fg);align-items:center}
+.case-meta .sep{width:.25rem;height:.25rem;border-radius:9999px;background:var(--muted-fg)}
+.case-hero h1{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:2rem;font-size:3.75rem;line-height:.95;text-wrap:balance}
+@media(min-width:768px){.case-hero h1{font-size:6rem}}
+.case-hero .tagline{margin-top:1.5rem;max-width:48rem;font-size:1.25rem;color:var(--muted-fg)}
+.case-cover{aspect-ratio:16/10;overflow:hidden;border-radius:1.5rem;border:1px solid var(--border);background:var(--muted);margin-top:2.5rem}
+.case-cover img{width:100%;height:100%;object-fit:cover}
+
+.cs-section{border-bottom:1px solid var(--border);padding:4rem 0}
+@media(min-width:768px){.cs-section{padding:5rem 0}}
+.cs-grid{display:grid;gap:2.5rem;max-width:72rem;margin:0 auto;padding:0 1.5rem}
+@media(min-width:768px){.cs-grid{grid-template-columns:220px 1fr}}
+.cs-label{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.3em;color:var(--ember)}
+.cs-title{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:.75rem;font-size:1.875rem;line-height:1.15}
+.cs-body{max-width:none;font-size:1.125rem;color:var(--muted-fg)}
+.cs-body p+*{margin-top:1rem}
+.cs-list{display:flex;flex-direction:column;gap:.75rem}
+.cs-list li{display:flex;gap:.75rem}
+.cs-list li::before{content:"";display:block;margin-top:.5rem;width:.75rem;height:.25rem;background:var(--ember);flex:none}
+.personas-grid{display:grid;gap:1.5rem}
+@media(min-width:768px){.personas-grid{grid-template-columns:1fr 1fr}}
+.persona{border-radius:1rem;border:1px solid var(--border);background:var(--card);padding:1.5rem}
+.persona .name{font-family:var(--font-display);font-size:1.5rem;color:var(--fg);font-weight:600}
+.persona .role{margin-top:.25rem;font-size:.875rem;color:var(--muted-fg)}
+.persona .blk{margin-top:1rem}
+.persona .k{font-family:var(--font-mono);font-size:.625rem;text-transform:uppercase;letter-spacing:.15em;color:var(--ember)}
+.persona .v{margin-top:.25rem;color:var(--fg);font-size:.875rem}
+.journey-table{overflow:hidden;border-radius:1rem;border:1px solid var(--border);width:100%}
+.journey-table table{width:100%;border-collapse:collapse;font-size:.875rem;text-align:left}
+.journey-table th{background:var(--muted);padding:1rem;font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.15em;color:var(--fg)}
+.journey-table td{padding:1rem;border-top:1px solid var(--border);color:var(--muted-fg)}
+.journey-table td.stage{color:var(--fg);font-weight:500}
+.journey-table td.feel{color:var(--ember)}
+.notes{border:1px dashed var(--border);background:var(--muted);border-radius:1rem;padding:1.5rem;color:var(--fg);font-size:.875rem}
+.notes .k{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--ember)}
+.notes ul{margin-top:.75rem;display:flex;flex-direction:column;gap:.5rem}
+
+.next-cs{max-width:72rem;margin:0 auto;padding:5rem 1.5rem}
+.next-cs .card{margin-top:1.5rem;display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem;border-radius:1.5rem;border:1px solid var(--border);background:var(--card);padding:2.5rem;transition:.2s}
+.next-cs .card:hover{border-color:rgba(0,0,0,.3)}
+.next-cs .work-cta{align-self:flex-start}
+@media(min-width:768px){
+  .next-cs .card{flex-direction:row;align-items:end}
+  .next-cs .work-cta{align-self:flex-end}
+}
+.next-cs h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.03em;margin-top:.75rem;font-size:3rem}
+.next-cs p{margin-top:.75rem;max-width:36rem;color:var(--muted-fg)}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* =====================================================================
+   PREMIUM ANIMATIONS — ADDED
+   Scroll-reveal utilities + hover micro-interactions for card/box/grid/
+   timeline/table sections only. No layout, spacing, color, or content
+   changes — animation-only additions.
+   ===================================================================== */
+
+/* Respect users who prefer reduced motion: disable all added animation */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-scale, .reveal-left, .reveal-right {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .service-ico { animation: none !important; }
+}
+
+/* ---- Scroll-reveal base classes (toggled by script.js via IntersectionObserver) ---- */
+
+/* Fade In + Slide Up (used for: work list, skills grid, process items,
+   experience items, education/certification/achievement columns, services) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+  transition-delay: calc(var(--reveal-i, 0) * 80ms);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scale In (used for: "Why me" cards) */
+.reveal-scale {
+  opacity: 0;
+  transform: translateY(18px) scale(.94);
+  transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+  transition-delay: calc(var(--reveal-i, 0) * 90ms);
+  will-change: opacity, transform;
+}
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Slide Left / Slide Right (available for alternating timeline-style reveals) */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+  transition-delay: calc(var(--reveal-i, 0) * 90ms);
+}
+.reveal-left.is-visible { opacity: 1; transform: translateX(0); }
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(64px);
+  transition: opacity .75s cubic-bezier(.16,1,.3,1), transform .75s cubic-bezier(.16,1,.3,1);
+  transition-delay: calc(var(--reveal-i, 0) * 120ms);
+}
+.reveal-right.is-visible { opacity: 1; transform: translateX(0); }
+
+/* ---- Hover micro-interactions for card / box components ---- */
+
+/* "Why me" cards: hover lift + soft glow + border-color animation */
+.why-card {
+  transition: transform .45s cubic-bezier(.16,1,.3,1), box-shadow .45s ease, border-color .45s ease;
+}
+.why-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -20px color-mix(in oklab, var(--ember) 35%, transparent),
+              0 0 0 1px color-mix(in oklab, var(--ember) 25%, transparent);
+  border-color: color-mix(in oklab, var(--ember) 45%, var(--border));
+}
+
+/* Service grid cells: hover lift + soft glow (keeps existing background hover) */
+.service {
+  transition: background .3s ease, transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease;
+  position: relative;
+}
+.service:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px -18px color-mix(in oklab, var(--ember) 30%, transparent);
+  z-index: 1;
+}
+/* ADDED: full-page ambient animated background — visible from the very
+   top all the way to the end of the page (fixed layer, follows scroll) */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    radial-gradient(35% 30% at 15% 15%, color-mix(in oklab, var(--ember) 10%, transparent), transparent 70%),
+    radial-gradient(30% 25% at 85% 10%, color-mix(in oklab, var(--ember-soft) 14%, transparent), transparent 70%),
+    radial-gradient(40% 35% at 80% 75%, color-mix(in oklab, var(--ember) 8%, transparent), transparent 70%),
+    radial-gradient(35% 30% at 15% 85%, color-mix(in oklab, var(--ember-soft) 10%, transparent), transparent 70%);
+  filter: blur(60px);
+  animation: pageDrift 26s ease-in-out infinite alternate;
+}
+@keyframes pageDrift{
+  0%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(-2%,2%) scale(1.08)}
+  100%{transform:translate(2%,-2%) scale(1)}
+}
+@media (prefers-reduced-motion: reduce){
+  body::before{animation:none}
+}
+
+/* ADDED: smooth ambient animated background glow for the landing/hero section */
+.hero{position:relative;overflow:hidden}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:-20%;
+  background:
+    radial-gradient(40% 35% at 20% 25%, color-mix(in oklab, var(--ember) 16%, transparent), transparent 70%),
+    radial-gradient(35% 30% at 80% 15%, color-mix(in oklab, var(--ember-soft) 22%, transparent), transparent 70%),
+    radial-gradient(45% 40% at 60% 85%, color-mix(in oklab, var(--ember) 10%, transparent), transparent 70%);
+  filter: blur(48px);
+  animation: heroDrift 18s ease-in-out infinite alternate;
+  z-index:0;
+  pointer-events:none;
+}
+.hero > *{position:relative;z-index:1}
+@keyframes heroDrift{
+  0%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(2%,-3%) scale(1.06)}
+  100%{transform:translate(-2%,2%) scale(1)}
+}
+@media (prefers-reduced-motion: reduce){
+  .hero::before{animation:none}
+}
+
+/* RESTORED: per-box traveling outline/light effect (as it was before the
+   whole-block version) — each service box gets its own animated ring on
+   hover, sitting just outside its existing static border */
+.service::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:inherit;
+  padding:2px;
+  background:conic-gradient(from 0deg, transparent 0deg, var(--ember) 40deg, transparent 100deg, transparent 360deg);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity:0;
+  transition:opacity .4s ease;
+  animation:serviceOutlineSpin 4.5s linear infinite;
+  pointer-events:none;
+  z-index:0;
+}
+.service:hover::before{opacity:1}
+@keyframes serviceOutlineSpin{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+@media (prefers-reduced-motion: reduce){
+  .service::before{animation:none}
+}
+.service-ico { animation: floatSoft 3.6s ease-in-out infinite; }
+.service:nth-child(2) .service-ico { animation-delay: .3s; }
+.service:nth-child(3) .service-ico { animation-delay: .6s; }
+.service:nth-child(4) .service-ico { animation-delay: .9s; }
+.service:nth-child(5) .service-ico { animation-delay: 1.2s; }
+.service:nth-child(6) .service-ico { animation-delay: 1.5s; }
+@keyframes floatSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* Process (timeline) items: soft background tint + accent number lift on hover */
+.process-item {
+  transition: background-color .3s ease, border-color .3s ease;
+  border-radius: .75rem;
+}
+.process-item:hover {
+  background-color: color-mix(in oklab, var(--muted) 60%, transparent);
+}
+.process-n {
+  transition: transform .4s cubic-bezier(.16,1,.3,1), color .3s ease;
+  display: inline-block;
+}
+.process-item:hover .process-n {
+  transform: translateY(-4px);
+  color: var(--ember);
+}
+
+/* Experience timeline cards: soft background tint + accent border on hover */
+.exp-item {
+  transition: background-color .3s ease, border-color .3s ease;
+  border-radius: .5rem;
+}
+.exp-item:hover {
+  background-color: color-mix(in oklab, var(--muted) 45%, transparent);
+}
+.exp-kind {
+  transition: border-color .3s ease, color .3s ease;
+}
+.exp-item:hover .exp-kind {
+  border-color: var(--ember);
+  color: var(--ember);
+}
+
+/* Education / certification / achievement boxes: hover slide + accent border */
+.cols3 li.edu {
+  transition: transform .35s cubic-bezier(.16,1,.3,1), border-color .3s ease;
+}
+.cols3 li.edu:hover {
+  transform: translateX(6px);
+  border-color: color-mix(in oklab, var(--ember) 40%, var(--border));
+}
+.dashed { transition: border-color .3s ease; }
+.dashed:hover { border-color: var(--ember); }
+/* Floating accent icon next to each achievement line */
+.cols3 li.edu .text-accent {
+  display: inline-block;
+  animation: floatSoft 3.2s ease-in-out infinite;
+}
+
+/* Skills grid list rows: gentle slide + accent-color hover */
+.skills-grid li {
+  transition: transform .3s ease, color .3s ease, border-color .3s ease;
+}
+.skills-grid li:hover {
+  transform: translateX(4px);
+  color: var(--ember);
+  border-color: color-mix(in oklab, var(--ember) 40%, var(--border));
+}
+
+/* Case-study cards sharing this stylesheet — persona cards, next-case-study
+   card, journey table — get the same premium hover treatment */
+.persona {
+  transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease, border-color .4s ease;
+}
+.persona:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px -20px color-mix(in oklab, var(--ember) 30%, transparent);
+  border-color: color-mix(in oklab, var(--ember) 35%, var(--border));
+}
+.journey-table { transition: box-shadow .4s ease; }
+.journey-table:hover { box-shadow: 0 16px 32px -20px rgba(0,0,0,.15); }
+.next-cs .card {
+  transition: transform .4s cubic-bezier(.16,1,.3,1), border-color .2s ease, box-shadow .4s ease;
+}
+.next-cs .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -22px rgba(0,0,0,.2);
+}
